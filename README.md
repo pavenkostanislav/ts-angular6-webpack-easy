@@ -9,6 +9,6 @@ to start the project, run "npm dev"
 *install global package "npm install -g typescript @angular/cli webpack-cli tslint eslint"
 
 #Issues
-*RESP API - https://postman-echo.com/
+*REST API - https://postman-echo.com/
 
 #Demo
