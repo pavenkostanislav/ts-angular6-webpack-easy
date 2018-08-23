@@ -10,12 +10,12 @@
         },
         {
             "type": "npm",
-            "script": "dev",
+            "script": "compile:sass",
             "problemMatcher": []
         },
         {
             "type": "npm",
-            "script": "build-dev",
+            "script": "dev",
             "problemMatcher": []
         }
     ]

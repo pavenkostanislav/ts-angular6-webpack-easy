@@ -1,6 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+var UglifyJSPlugin = require('uglifyjs-webpack-plugin'); // ������ �����������
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
@@ -11,7 +11,7 @@ module.exports = {
     'app': './src/main.ts'
   },
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, 'dist'),     // ���� � �������� �������� ������ - ����� public
     publicPath: '/',
     filename: '[name].bundle.js'
   },
@@ -22,9 +22,10 @@ module.exports = {
     extensions: ['.ts', '.js']
   },
   module: {
-    rules: [
+
+    rules: [   //��������� ��� ts
       {
-        test: /\.ts$/,
+        test: /\.ts$/, // ���������� ��� ������
         use: [
           {
             loader: 'awesome-typescript-loader',
@@ -49,27 +50,31 @@ module.exports = {
         test: /\.css$/,
         include: path.resolve(__dirname, 'src/app'),
         loader: 'raw-loader'
+      }, {
+        test: /\.scss$/,
+        exclude: path.resolve(__dirname, 'src/app'),
+        use: [
+          MiniCssExtractPlugin.loader,
+          "css-loader"
+        ]
+      }, {
+        test: /\.scss$/,
+        include: path.resolve(__dirname, 'src/app'),
+        loader: 'raw-loader'
       }
     ]
-  },
+},
   plugins: [
     new webpack.ContextReplacementPlugin(
       /angular(\|\/)core/,
-      path.resolve(__dirname, 'src'),
-      {}
+      path.resolve(__dirname, 'src'), // ������� � ��������� �������
+      {} // ����� ���������
     ),
     new HtmlWebpackPlugin({
       template: 'src/index.html'
     }),
     new MiniCssExtractPlugin({
       filename: "[name].css"
-    }),
-    new UglifyJSPlugin(),
-    new webpack.NoEmitOnErrorsPlugin(),
-    new webpack.LoaderOptionsPlugin({
-      htmlLoader: {
-        minimize: false
-      }
     })
   ]
 }

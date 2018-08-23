@@ -1,5 +1,12 @@
+import { IUserPut, IUserPost, IRegistrationState } from './';
 export interface IData {
-	state: any;
+	registrationState: IRegistrationState;	
+	api?: {
+		user?: {
+			userPut?: IUserPut;
+			userPost?: IUserPost;
+		};
+	};
 };
 
 

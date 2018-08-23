@@ -1,1 +1,1 @@
-export interface IMap<T = string | number> { [id: string]: T; }
+export interface IMap<T = string> { [id: string]: T; }
