@@ -1,0 +1,15 @@
+<ngb-tabset type="pills">
+	<ngb-tab title="Регистрация">
+		<ng-template ngbTabContent *ngIf="sys.pages.registration.show">
+			<registration-component></registration-component>
+		</ng-template>
+		<ng-template ngbTabContent *ngIf="sys.pages.passport.show">
+			<passport-component></passport-component>
+		</ng-template>
+	</ngb-tab>
+	<ngb-tab title="Вход в личный кабинет">
+		<ng-template ngbTabContent>
+			<p>The page in implementation...</p>
+		</ng-template>
+	</ngb-tab>
+</ngb-tabset>

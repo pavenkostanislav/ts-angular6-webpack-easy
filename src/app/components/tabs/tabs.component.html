@@ -1,0 +1,8 @@
+<div class="container">
+  <ul class="nav nav-tabs">
+    <li *ngFor="let tab of tabs" (click)="selectTab(tab)" [class.active]="tab.active">
+      <a class="cursor-pointer" [innerHTML]="tab.title"></a>
+    </li>
+  </ul>
+  <ng-content></ng-content>
+</div>
