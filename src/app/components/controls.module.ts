@@ -9,6 +9,7 @@ import { InputPhoneComponent } from './input-phone/input-phone.component';
 import { InputTextComponent } from './input-text/input-text.component';
 import { TabComponent } from './tabs/tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { DatePickerComponent } from './date-picker/date-picker.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { TabsComponent } from './tabs/tabs.component';
     InputPhoneComponent,
     InputTextComponent,
     CheckboxComponent,
-    InputDateComponent
+    InputDateComponent,
+    DatePickerComponent
   ],
   exports: [
     TabComponent,
@@ -31,7 +33,8 @@ import { TabsComponent } from './tabs/tabs.component';
     InputPhoneComponent,
     InputTextComponent,
     CheckboxComponent,
-    InputDateComponent
+    InputDateComponent,
+    DatePickerComponent
   ]
 })
 export class ControlModule { }

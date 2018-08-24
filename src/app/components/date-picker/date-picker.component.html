@@ -1,0 +1,29 @@
+<div class="form-group row">
+
+	<label class="col-sm-12 col-md-4" for="dateControl">{{title}}</label>
+
+	<div class="col-sm-12 col-md-6">
+		<div class="form-inline">
+			<div class="form-group">
+				<div class="input-group">
+
+					<input class="form-control" type="text" name="dateControl" placeholder="dd.mm.yyyy" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="dateValue"
+					 (ngModelChange)="onNgModelChange($event)" />
+
+					<div class="input-group-append">
+						<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
+							#todo
+						</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col-sm-12 offset-md-4 col-md-8" *ngIf="!dateControl.valid && !focused">
+		<hr style="background-color: red !important; height:1px;" />
+		<small>{{errorMessage}}</small>
+	</div>
+
+</div>

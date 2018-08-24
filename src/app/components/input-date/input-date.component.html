@@ -4,26 +4,6 @@
 
   <div class="col-sm-12 col-md-6">
 
-    	<!--
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-4" for="birthday">Дата рождения</label>
-		<div class="col-sm-12 col-md-6">
-			<div class="form-inline">
-				<div class="form-group">
-					<div class="input-group">
-						<input class="form-control" placeholder="yyyy-mm-dd" name="birthday" formControlName="birthday" ngbDatepicker #d="ngbDatepicker">
-						<div class="input-group-append">
-							<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-								#todo
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
--->
-
     <input class="form-control" type="text" name="dateControl" [(ngModel)]="dateControl.value" (ngModelChange)="onNgModelChange($event)"
       [textMask]="{mask: getPhoneNumberMask, keepCharPositions: true}" (blur)="onBlur()" (focus)="onFocus()" />
 
