@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { generateTestAccount } from '../../../../../spec/generateTestData';
-import { pattern } from '../../../dictionaries/pattern.dictonary';
+import { pattern } from '../../../dictionaries';
 import { AppService } from '../../app-component/app.service';
 import { RegistrationService } from './registration.service';
 import { AsyncValidatorFn, FormControl, ValidatorFn } from '@angular/forms';

@@ -1,20 +1,19 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import {
-    FormsModule,
-    ReactiveFormsModule
-} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AppComponent } from './app.component';
 import { ControlModule } from '../../components/controls.module';
-import { AppService } from "./app.service";
 import { LoginModule } from '../login-component/login.module';
+import { AppComponent } from './app.component';
+import { AppRouting } from './app.routing';
+import { AppService } from "./app.service";
 
 
 @NgModule({
     imports: [
+        AppRouting,
         BrowserModule,
         FormsModule,
         ReactiveFormsModule,
