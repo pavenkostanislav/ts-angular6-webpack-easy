@@ -1,6 +1,6 @@
 #Car Loan Online
 
-to start the project, run "npm dev"
+to start the project, run "npm dev" and use "/login" route
 
 #Setup environment
 *install VS code - https://code.visualstudio.com/download
