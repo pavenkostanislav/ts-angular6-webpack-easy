@@ -7,10 +7,11 @@
     <input class="form-control" type="text" name="textControl" [(ngModel)]="textControl.value" (ngModelChange)="onNgModelChange($event)"
       (blur)="onBlur()" (focus)="onFocus()" />
 
-    <div *ngIf="!textControl.valid && !focused">
-      <hr style="background-color: red !important; height:1px;" />
-      <small>{{errorMessage}}</small>
-    </div>
+  </div>
+
+  <div class="col-sm-12 offset-md-4 col-md-8" *ngIf="!textControl.valid && !focused">
+    <hr style="background-color: red !important; height:1px;" />
+    <small>{{errorMessage}}</small>
   </div>
 
 </div>

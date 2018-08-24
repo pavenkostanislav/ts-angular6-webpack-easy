@@ -23,11 +23,11 @@ export class CheckboxComponent {
     this.onChanged.emit(this.checkbox);
   }
 
-  onFocus() {
+  mouseEnter() {
     this.focused = true;
   }
 
-  onBlur() {
+  mouseLeave() {
     this.focused = false;
   }
 }
