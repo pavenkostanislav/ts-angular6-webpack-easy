@@ -14,11 +14,13 @@ export class AppService {
 	defaultPage(show = false): IPage {
 		return { show };
 	}
+
 	pages: IMap<IPage> = {
 		'login': this.defaultPage(),
 		'passport': this.defaultPage(),
 		'registration': this.defaultPage()
 	};
+
 	private lastPage: Page = null;
 
 	constructor(private http: HttpClient) {}
