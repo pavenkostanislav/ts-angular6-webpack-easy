@@ -8,9 +8,9 @@ import { AppService } from './app.service';
 	encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-	constructor(public sys: AppService) { };
+	constructor(public appSrv: AppService) { };
 
 	ngOnInit() {
-		this.sys.nextPage('registration');
+		this.appSrv.nextPage('registration');
 	}
 }

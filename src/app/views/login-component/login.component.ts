@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AppService } from "../app-component/app.service";
+import { Component } from '@angular/core';
+import { AppService } from '../app-component/app.service';
+import { IMap, IPage } from '../../interfaces';
 
 @Component({
 	selector: 'login-component',
@@ -7,6 +8,11 @@ import { AppService } from "../app-component/app.service";
 	styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-	constructor(public sys: AppService) { };
+	registration: boolean;
+	passport: boolean;
+	constructor(appSrv: AppService) {
+		this.passport = appSrv.getPagesInfo('passport');
+		this.registration = appSrv.getPagesInfo('registration');
+	}
 }
 

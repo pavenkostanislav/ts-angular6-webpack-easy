@@ -2,6 +2,7 @@
 import { Injectable, OnInit } from '@angular/core';
 import { IData, IPage, IMap } from '../../interfaces';
 import { HttpMethod, Page } from '../../types';
+import { msgErrors } from '../../dictionaries';
 
 @Injectable()
 export class AppService {
@@ -10,10 +11,10 @@ export class AppService {
 	public timeWait: string = '33';
 	public data: IData;
 
-	private defaultPage(show = false): IPage {
+	defaultPage(show = false): IPage {
 		return { show };
 	}
-	public pages: IMap<IPage> = {
+	pages: IMap<IPage> = {
 		'login': this.defaultPage(),
 		'passport': this.defaultPage(),
 		'registration': this.defaultPage()
@@ -21,6 +22,13 @@ export class AppService {
 	private lastPage: Page = null;
 
 	constructor(private http: HttpClient) {}
+
+	getMsgErrors(name: string) {
+	  return msgErrors[name];
+	}
+	getPagesInfo(name: string): boolean {
+	  return this.pages[name].show;
+	}
 
 	nextPage(next: Page): void {
 		if (this.lastPage) { this.pages[this.lastPage].show = false; }

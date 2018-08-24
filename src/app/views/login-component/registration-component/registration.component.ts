@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { generateTestAccount } from '../../../../../spec/generateTestData';
 import { pattern } from '../../../dictionaries';
 import { AppService } from '../../app-component/app.service';
 import { RegistrationService } from './registration.service';
-import { AsyncValidatorFn, FormControl, ValidatorFn } from '@angular/forms';
 
 @Component({
 	selector: 'registration-component',
@@ -13,15 +11,11 @@ import { AsyncValidatorFn, FormControl, ValidatorFn } from '@angular/forms';
 	styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-	public mask = ['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
-	unMaskForPhone(val: string): string {
-		if (val.indexOf('+7') === 0) { val = val.substr(2, val.length); }
-		return val.replace(/\D+/g, '');
-	}
-	
-	public form: FormGroup;
 
-	constructor(public sys: AppService,
+	form: FormGroup;
+	phoneMobile: AbstractControl;
+
+	constructor(public appSrv: AppService,
 		private _formBuilder: FormBuilder) { };
 
 	ngOnInit(): void {
@@ -37,19 +31,22 @@ export class RegistrationComponent implements OnInit {
 			birthday: [testAccount.birthday, [Validators.required, Validators.pattern(pattern['user.birthday'])]],
 			conditionPassed: [testAccount.conditionPassed, [Validators.required]]
 		});
+		this.phoneMobile = this.form.get('phoneMobile');
 	}
 
 	//1.4.1 (1)
 	createUser = async (response: any, funSuccess: any) => {
-		this.sys.nextPage('passport');
+		this.appSrv.nextPage('passport');
 		console.log(this.form.value);
 		if (this.form.valid) {
-			await new RegistrationService(this.sys).createUser(this.form.value, funSuccess);
+			await new RegistrationService(this.appSrv).createUser(this.form.value, funSuccess);
 		}
 
 		console.log(this.form.valid);
 	}
 	//1.4.1 (2,3)
-	updateUser = async (response: any, funSuccess: any) => await new RegistrationService(this.sys).updateUser(this.form.value);
+	updateUser = async (response: any, funSuccess: any) => await new RegistrationService(this.appSrv).updateUser(this.form.value);
+
+	changePhoneMobile = (phone: AbstractControl) => this.form.get('phoneMobile').setValue(phone.value)
 }
 
