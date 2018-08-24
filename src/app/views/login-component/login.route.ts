@@ -6,17 +6,18 @@ import { LoginComponent } from './login.component';
 export const loginRoute: Routes = [
   {
     path: routes.login.url,
-    component: LoginComponent
+    component: LoginComponent,
+    //children: [
+    //  {
+    //    path: routes.registration.url,
+    //    component: RegistrationComponent
+    //  },
+    //  {
+    //    path: routes.passport.url,
+    //    component: PassportComponent
+    //  }
+    //];
   }
-  //,
-  //{
-  //  path: routes.registration.url,
-  //  component: RegistrationComponent
-  //},
-  //{
-  //  path: routes.passport.url,
-  //  component: PassportComponent
-  //}
-];
+]
 
 
