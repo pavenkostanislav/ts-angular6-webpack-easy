@@ -14,11 +14,11 @@ export class InputPhoneComponent {
   constructor(appSrv: AppService) {
     this.errorMessage = appSrv.getMsgErrors('notValidValue');
   }
-  @Input() phoneMobile: AbstractControl;
+  @Input() phoneControl: AbstractControl;
   @Output() onChanged = new EventEmitter<AbstractControl>();
   onNgModelChange(value: string) {
-    this.phoneMobile.setValue(this.unMask(value));
-    this.onChanged.emit(this.phoneMobile);
+    this.phoneControl.setValue(this.unMask(value));
+    this.onChanged.emit(this.phoneControl);
   }
 
   unMask(val: string): string {

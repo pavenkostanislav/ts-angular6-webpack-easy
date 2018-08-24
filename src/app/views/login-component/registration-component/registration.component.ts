@@ -11,9 +11,7 @@ import { RegistrationService } from './registration.service';
 	styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-
 	form: FormGroup;
-	phoneMobile: AbstractControl;
 
 	constructor(public appSrv: AppService,
 		private _formBuilder: FormBuilder) { };
@@ -29,9 +27,8 @@ export class RegistrationComponent implements OnInit {
 			phoneMobile: [testAccount.phoneMobile, [Validators.required, Validators.pattern(pattern['user.phoneMobile'])]],
 			email: [testAccount.email, [Validators.required, Validators.pattern(pattern['user.email'])]],
 			birthday: [testAccount.birthday, [Validators.required, Validators.pattern(pattern['user.birthday'])]],
-			conditionPassed: [testAccount.conditionPassed, [Validators.required]]
+			conditionPassed: [testAccount.conditionPassed, [Validators.required, Validators.pattern(pattern['user.conditionPassed'])]]
 		});
-		this.phoneMobile = this.form.get('phoneMobile');
 	}
 
 	//1.4.1 (1)
@@ -47,6 +44,7 @@ export class RegistrationComponent implements OnInit {
 	//1.4.1 (2,3)
 	updateUser = async (response: any, funSuccess: any) => await new RegistrationService(this.appSrv).updateUser(this.form.value);
 
-	changePhoneMobile = (phone: AbstractControl) => this.form.get('phoneMobile').setValue(phone.value)
+	changeInputText = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
+	changePhoneMobile = (phone: AbstractControl) => this.form.get('phoneMobile').setValue(phone.value);
 }
 

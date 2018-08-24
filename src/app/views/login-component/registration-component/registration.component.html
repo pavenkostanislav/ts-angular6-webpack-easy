@@ -1,19 +1,8 @@
 <form [formGroup]="form" (ngSubmit)="createUser()">
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-4" for="lastName">Фамилия</label>
-		<input class="col-sm-12 col-md-6 form-control" type="text" name="lastName" formControlName="lastName" />
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-4" for="firstName">Имя</label>
-		<input class="col-sm-12 col-md-6 form-control" type="text" name="firstName" formControlName="firstName" />
-	</div>
-
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-4" for="patronymic">Отчество</label>
-		<input class="col-sm-12 col-md-6 form-control" type="text" name="patronymic" formControlName="patronymic" />
-	</div>
-
+	<input-text [title]="'Фамилия'" [textControl]="form.get('lastName')" (onChanged)="changeInputText('lastName', $event)"></input-text>
+	<input-text [title]="'Имя'" [textControl]="form.get('firstName')" (onChanged)="changeInputText('firstName', $event)"></input-text>
+	<input-text [title]="'Отчество'" [textControl]="form.get('patronymic')" (onChanged)="changeInputText('patronymic', $event)"></input-text>
+	<!--
 	<div class="form-group row">
 		<label class="col-sm-12 col-md-4" for="birthday">Дата рождения</label>
 		<div class="col-sm-12 col-md-6">
@@ -23,8 +12,7 @@
 						<input class="form-control" placeholder="yyyy-mm-dd" name="birthday" formControlName="birthday" ngbDatepicker #d="ngbDatepicker">
 						<div class="input-group-append">
 							<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-								+
-								<!--#todo-->
+								#todo
 							</button>
 						</div>
 					</div>
@@ -32,24 +20,15 @@
 			</div>
 		</div>
 	</div>
+-->
 
 
-	<input-phone [phoneMobile]="phoneMobile" (onChanged)="changePhoneMobile($event)"></input-phone>
-
-
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-4" for="email">Email</label>
-		<input class="col-sm-12 col-md-6 form-control" type="email" name="email" formControlName="email" />
-	</div>
-
-	<div class="form-group row">
-		<input class="col-sm-12 offset-md-4 col-md-1 form-control" type="checkbox" name="conditionPassed" formControlName="conditionPassed"
-		/>
-		<label class="col-sm-12 col-md-5" for="conditionPassed">
-			<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на обработку персональных данных (для получения информации
-				о продуктах и услугах банка)</a>
-		</label>
-	</div>
+	<input-phone [phoneControl]="form.get('phoneMobile')" (onChanged)="changePhoneMobile($event)"></input-phone>
+	<input-text [title]="'Email'" [textControl]="form.get('email')" (onChanged)="changeInputText('email', $event)"></input-text>
+	<check-box [checkbox]="form.get('conditionPassed')" (onChanged)="changeInputText('conditionPassed', $event)">
+		<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на обработку персональных данных (для получения информации
+			о продуктах и услугах банка)</a>
+	</check-box>
 
 	<div class="col-sm-12 offset-md-3 col-md-6 offset-md-3">
 		<input type="submit" class="btn btn-danger" value="далее >>" [disabled]="!form.valid" />
