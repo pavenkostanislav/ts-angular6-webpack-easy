@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AppService } from '../app-component/app.service';
-import { IMap, IPage } from '../../interfaces';
 
 @Component({
 	selector: 'login-component',
