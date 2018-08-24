@@ -16,6 +16,14 @@ to start the project, run "npm dev"
 *Registration - https://91.199.205.97/OnlineApproval/#sh:sm=Lid&ws=sh
 
 #FAQ
-*How to add bootstrap in angular 6 project?
-https://stackoverflow.com/questions/50290197/how-to-add-bootstrap-in-angular-6-project
-Add <link rel="stylesheet" type="text/css" href="node_modules/bootstrap/dist/css/bootstrap.min.css" /> in to index.html
+*update project to angular 6 and other packages
+
+*install SASS preprocessor for css "npm install -g node-sass" "npm install node-sass sass-loader --save-dev"
+*add script for compile "compile:sass": "node-sass src/assetc/main.scss src/assetc/styles.css"
+*add script for starting "start:sass-dev": "npm run compile:sass && npm run dev"
+#todo setup to webpack!!! "sass-loader": "^7.1.0"
+
+*install boostrap package "npm install ng-bootstrap @ng-bootstrap/ng-bootstrap --save"
+*setup boostrap css type in src/assetc/mail.scss row: @import "/node_modules/bootstrap/dist/css/bootstrap.css";
+
+*install angular2-text-mask package "npm i angular2-text-mask --save" to add a mask for entering tags on the DOM markup. Example: phone
