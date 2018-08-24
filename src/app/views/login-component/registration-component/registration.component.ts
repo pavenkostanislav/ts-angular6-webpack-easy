@@ -44,7 +44,6 @@ export class RegistrationComponent implements OnInit {
 	//1.4.1 (2,3)
 	updateUser = async (response: any, funSuccess: any) => await new RegistrationService(this.appSrv).updateUser(this.form.value);
 
-	changeInputText = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
-	changePhoneMobile = (phone: AbstractControl) => this.form.get('phoneMobile').setValue(phone.value);
+	changeValue = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
 }
 
