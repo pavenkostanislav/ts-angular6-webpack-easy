@@ -1,4 +1,4 @@
-export interface IUserPut {
+export interface IRequestPut {
     account: {
         birthday: string
     },

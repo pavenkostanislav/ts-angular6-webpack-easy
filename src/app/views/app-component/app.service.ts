@@ -3,6 +3,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { IData, IPage, IMap } from '../../interfaces';
 import { HttpMethod, Page } from '../../types';
 import { msgErrors } from '../../dictionaries';
+import { ApiService } from '../../services/api.service';
 
 @Injectable()
 export class AppService {
@@ -23,13 +24,16 @@ export class AppService {
 
 	private lastPage: Page = null;
 
-	constructor(private http: HttpClient) {}
+	constructor(
+		public api: ApiService,
+		private http: HttpClient
+	) { }
 
 	getMsgErrors(name: string) {
-	  return msgErrors[name];
+		return msgErrors[name];
 	}
 	getPagesInfo(name: string): boolean {
-	  return this.pages[name].show;
+		return this.pages[name].show;
 	}
 
 	nextPage(next: Page): void {

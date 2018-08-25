@@ -18,5 +18,7 @@
 	<div>
 		<pre>form.value: {{form.value | json}}</pre>
 		<pre>form.valid: {{form.valid | json}}</pre>
+		
+		<pre>resposePost : {{appSrv.data && appSrv.data.api && appSrv.data.api.user && appSrv.data.api.user.resposePost ? this.appSrv.data.api.user.resposePost : '' | json}}</pre>
 	</div>
 </form>

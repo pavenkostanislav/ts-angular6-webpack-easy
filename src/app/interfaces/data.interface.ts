@@ -1,10 +1,16 @@
-import { IUserPut, IUserPost, IRegistrationState } from './';
+import { IRequestPut, IRequestPost, IRegistrationState } from './';
+
+export interface IUserResponse {	
+	account_id: string;
+}
+
 export interface IData {
-	registrationState: IRegistrationState;	
+	registration: IRegistrationState;
 	api?: {
-		user?: {
-			userPut?: IUserPut;
-			userPost?: IUserPost;
+		user: {
+			requestPut?: IRequestPut;
+			requestPost?: IRequestPost;
+			resposePost?: IUserResponse;
 		};
 	};
 };

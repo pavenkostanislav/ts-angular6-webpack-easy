@@ -1,6 +1,6 @@
 import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IRegistrationForm, IUserPost, IUserPut } from '../../../interfaces';
+import { IRegistrationForm, IRequestPost, IRequestPut, IUserResponse } from '../../../interfaces';
 import { AppService } from '../../app-component/app.service';
 
 @Injectable()
@@ -8,38 +8,41 @@ export class RegistrationService {
 	constructor(private appSrv: AppService) { }
 
 	async createUser(account: IRegistrationForm, funSuccess: any): Promise<void> {
-		if (account) {
+		if (!account) {
 			return Promise.reject(this.appSrv.getMsgErrors('404'));
 		}
-		this.appSrv.data.registrationState = { account };
+		this.appSrv.data = {
+			registration: {
+				account
+			}
+		};
 		this.appSrv.log('старт 1.4.1_createUser');
 
-		const userPost: IUserPost = {
-			firstName: this.appSrv.data.registrationState.account.firstName,
-			lastName: this.appSrv.data.registrationState.account.lastName,
-			patronymic: this.appSrv.data.registrationState.account.patronymic,
-			phoneMobile: this.appSrv.data.registrationState.account.phoneMobile,
-			email: this.appSrv.data.registrationState.account.email,
-			conditionPassed: this.appSrv.data.registrationState.account.conditionPassed,
-			birthday: this.appSrv.data.registrationState.account.birthday
+		const requestPost: IRequestPost = {
+			firstName: this.appSrv.data.registration.account.firstName,
+			lastName: this.appSrv.data.registration.account.lastName,
+			patronymic: this.appSrv.data.registration.account.patronymic,
+			phoneMobile: this.appSrv.data.registration.account.phoneMobile,
+			email: this.appSrv.data.registration.account.email,
+			conditionPassed: this.appSrv.data.registration.account.conditionPassed
 		};
-		const user = {
-			userPost
-		}
 		this.appSrv.data.api = {
-			user
+			user: {
+				requestPost
+			}
 		};
-		Promise.resolve(this.appSrv.restJsonRequestOnlineApproval('POST', '/user/user', this.appSrv.data.api.user.userPost, null, funSuccess));
+		this.appSrv.data.api.user.resposePost = await this.appSrv.api.post<IUserResponse>('user/user', this.appSrv.data.api.user.requestPost);
+		//Promise.resolve(this.appSrv.restJsonRequestOnlineApproval('POST', '/user/user', this.appSrv.data.api.user.userPost, null, funSuccess));
 	};
 	async updateUser(account: IRegistrationForm): Promise<void> {
 		if (account) {
 			return Promise.reject(this.appSrv.getMsgErrors('404'));
 		}
-		this.appSrv.data.registrationState = { account };
+		this.appSrv.data.registration = { account };
 		this.appSrv.log('старт 1.4.1_updateUser');
-		const userPut: IUserPut = {
+		const requestPut: IRequestPut = {
 			account: {
-				birthday: this.appSrv.data.registrationState.account.birthday
+				birthday: this.appSrv.data.registration.account.birthday
 			},
 			passport: {
 				docSerial: "string",
@@ -56,13 +59,12 @@ export class RegistrationService {
 			},
 			account_id: 0
 		};
-		const user = {
-			userPut
-		}
 		this.appSrv.data.api = {
-			user
+			user: {
+				requestPut
+			}
 		};
-		Promise.resolve(this.appSrv.restJsonRequestOnlineApproval('PUT', '/user/user', JSON.stringify(this.appSrv.data.api.user.userPut), null, this.checkApplication));
+		Promise.resolve(this.appSrv.restJsonRequestOnlineApproval('PUT', '/user/user', JSON.stringify(this.appSrv.data.api.user.requestPut), null, this.checkApplication));
 	};
 
 	//1.4.1 (4)
