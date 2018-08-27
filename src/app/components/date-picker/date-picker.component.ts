@@ -1,12 +1,7 @@
 import { Component, EventEmitter, Input, Output, ViewEncapsulation, OnChanges, OnInit } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
 import { AppService } from '../../views/app-component/app.service';
-
-interface DatePickerResult {
-  year: number,
-  month: number,
-  day: number
-}
+import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   moduleId: module.id,
@@ -18,7 +13,7 @@ export class DatePickerComponent implements OnChanges, OnInit {
   @Input() title = 'caption';
   focused: boolean = true;
   errorMessage: string;
-  dateValue: DatePickerResult;
+  dateValue: NgbDateStruct;
 
   constructor(appSrv: AppService) {
     this.errorMessage = appSrv.getMsgErrors('notValidValue');
@@ -34,11 +29,11 @@ export class DatePickerComponent implements OnChanges, OnInit {
 
   @Input() dateControl: AbstractControl;
   @Output() onChanged = new EventEmitter<AbstractControl>();
-  onNgModelChange(value: DatePickerResult) {
+  onNgModelChange(value: NgbDateStruct) {
     this.dateControl.setValue(this.convertToString(value));
     this.onChanged.emit(this.dateControl);
   }
-  convertToString(val: DatePickerResult): string {
+  convertToString(val: NgbDateStruct): string {
     const day = (val.day.toString().length < 2) ? `0${val.day}` : val.day.toString();
     const month = (val.month.toString().length < 2) ? `0${val.month}` : val.month.toString();
 
@@ -46,8 +41,8 @@ export class DatePickerComponent implements OnChanges, OnInit {
   }
 
 
-  convertToDatePickerFormat(val: string): DatePickerResult {
-    const res: DatePickerResult = {
+  convertToDatePickerFormat(val: string): NgbDateStruct {
+    const res: NgbDateStruct = {
       day: +val.substr(0, 2),
       month: +val.substr(3, 2),
       year: +val.substr(6, 4)

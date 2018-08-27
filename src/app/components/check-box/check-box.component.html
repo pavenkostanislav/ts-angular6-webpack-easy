@@ -3,12 +3,9 @@
   <input class="col-sm-12 offset-md-4 col-md-1 form-control" type="checkbox" name="checkbox" [(ngModel)]="checkbox.value" (ngModelChange)="onNgModelChange($event)"
   />
   <div class="col-sm-12 col-md-6">
-
-
     <label class="col-sm-12 col-md-5" for="checkbox">
       <ng-content></ng-content>
     </label>
-
   </div>
 
   <div class="col-sm-12 offset-md-4 col-md-8" *ngIf="!checkbox.valid && !focused">

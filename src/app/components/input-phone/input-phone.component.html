@@ -3,10 +3,8 @@
   <label class="col-sm-12 col-md-4" for="phoneControl">Телефон</label>
 
   <div class="col-sm-12 col-md-6">
-
     <input class="form-control" type="text" name="phoneControl" [(ngModel)]="phoneControl.value" (ngModelChange)="onNgModelChange($event)"
       [textMask]="{mask: getPhoneNumberMask, keepCharPositions: true}" (blur)="onBlur()" (focus)="onFocus()" />
-
   </div>
 
   <div class="col-sm-12 offset-md-4 col-md-8" *ngIf="!phoneControl.valid && !focused">

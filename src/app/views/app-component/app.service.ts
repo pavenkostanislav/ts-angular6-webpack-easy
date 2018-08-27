@@ -1,39 +1,38 @@
-﻿import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+﻿import { Injectable } from '@angular/core';
 import { msgErrors } from '../../dictionaries';
-import { IData, IMap, IPage } from '../../interfaces';
+import { IData, ILogger, IMap, IPage, IConfig } from '../../interfaces';
 import { ApiService } from '../../services/api.service';
+import { ConfigService } from '../../services/config.service';
 import { getBunyan } from '../../tools/getBunyan';
 import { Page } from '../../types';
-import { Logger } from '../../interfaces';
 
 @Injectable()
 export class AppService {
-	public serviceUrl: any = 'https://online-auto.rusfinance.ru/OnlineApproval/api';
-	//public serviceUrl:any='http://rbib-it1:8089';
 	public timeWait: string = '33';
 
 	public data: IData;
 
-	public log: Logger;
+	public log: ILogger;
+
 
 	defaultPage(show = false): IPage {
 		return { show };
 	}
 
-	pages: IMap<IPage> = {
+	public pages: IMap<IPage> = {
 		'login': this.defaultPage(),
 		'passport': this.defaultPage(),
 		'registration': this.defaultPage()
 	};
 
 	private lastPage: Page = null;
-
+	public config: IConfig;
 	constructor(
 		public api: ApiService,
-		private http: HttpClient
+		configSrv: ConfigService
 	) {
-		this.log = getBunyan();
+		this.config = configSrv.getConfig();
+		this.log = getBunyan(this.config);
 	}
 
 	getMsgErrors(name: string) {
@@ -58,6 +57,5 @@ export class AppService {
 		else {
 			alert(this.getMsgErrors('noMessage'));
 		}
-
 	}
 }

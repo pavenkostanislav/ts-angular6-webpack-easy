@@ -2,5 +2,11 @@
     "log": {
         "level": "DEBUG",
         "hideFields": "schema,details"
-      }
+    },
+    "environment" : {
+        "url": "https://online-auto.rusfinance.ru/OnlineApproval/api",
+        "time": {
+            "wait": "33"
+        }
+    }
 }

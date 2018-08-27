@@ -9,5 +9,3 @@ import { getResponse } from './getResponse';
 export async function getRequest<TResponse>(observable: Observable<Response>): Promise<TResponse> {
   return observable.map(response => getResponse<TResponse>(response)).toPromise();
 }
-
-

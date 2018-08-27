@@ -6,7 +6,7 @@ import { AppService } from '../../app-component/app.service';
 export class RegistrationService {
 	constructor(private appSrv: AppService) { }
 
-	async createUser(account: IRegistrationForm, funSuccess: any): Promise<void> {
+	async createUser(account: IRegistrationForm): Promise<void> {
 		this.appSrv.log.debug('service', '1.4.1', 'Вызывается сервис /user/user, метод POST с передачей параметров в теле запроса');
 		if (!account) {
 			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));

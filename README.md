@@ -5,6 +5,7 @@ to start the project, run "npm dev" and use "/login" route
 #Setup environment
 *install VS code - https://code.visualstudio.com/download
 *install tsLint - https://github.com/palantir/tslint
+*install Resharper 9 Keybindings: https://marketplace.visualstudio.com/items?itemName=ms-vscode.resharper9-keybindings
 *install nodejs LTS v8.11.4 & npm 5.6.0 - https://nodejs.org/en/download/
 *install global package "npm install -g typescript @angular/cli webpack-cli tslint eslint"
 
@@ -13,7 +14,7 @@ to start the project, run "npm dev" and use "/login" route
 *RESP api documentation - https://online-auto.rusfinance.ru/OnlineApproval/api-docs
 
 #Demo
-*Registration - https://91.199.205.97/OnlineApproval/#sh:sm=Lid&ws=sh
+*Registration - https://online-auto.rusfinance.ru/OnlineApproval/#sh:sm=Lid&ws=sh
 
 #FAQ
 *update project to angular 6 and other packages

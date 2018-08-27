@@ -31,19 +31,15 @@ export class RegistrationComponent implements OnInit {
 		});
 	}
 
-	//1.4.1 (1)
-	createUser = async (response: any, funSuccess: any) => {
-		this.appSrv.nextPage('passport');
+	createUser = async () => {
 		console.log(this.form.value);
 		if (this.form.valid) {
-			await new RegistrationService(this.appSrv).createUser(this.form.value, funSuccess);
+			await new RegistrationService(this.appSrv).createUser(this.form.value);
 		}
 
 		console.log(this.form.valid);
-	}
-	//1.4.1 (2,3)
-	updateUser = async (response: any, funSuccess: any) => await new RegistrationService(this.appSrv).updateUserBirthday(this.form.value);
-
+	};
+	
 	changeValue = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
 }
 

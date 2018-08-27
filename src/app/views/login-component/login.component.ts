@@ -9,7 +9,7 @@ import { AppService } from '../app-component/app.service';
 export class LoginComponent {
 	registration: boolean;
 	passport: boolean;
-	constructor(appSrv: AppService) {
+	constructor(public appSrv: AppService) {
 		this.passport = appSrv.getPagesInfo('passport');
 		this.registration = appSrv.getPagesInfo('registration');
 	}

@@ -1,9 +1,9 @@
 <ngb-tabset type="pills">
 	<ngb-tab title="Регистрация">
-		<ng-template ngbTabContent *ngIf="registration">
+		<ng-template ngbTabContent *ngIf="appSrv.pages.registration.show">
 			<registration-component></registration-component>
 		</ng-template>
-		<ng-template ngbTabContent *ngIf="passport">
+		<ng-template ngbTabContent *ngIf="appSrv.pages.passport.show">
 			<passport-component></passport-component>
 		</ng-template>
 	</ngb-tab>
