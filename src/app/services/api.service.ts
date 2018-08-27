@@ -6,7 +6,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 import { IMap } from '../interfaces';
-import { mapRequest } from './mapRequest';
+import { getRequest } from '../tools/getRequest';
 
 const environment = {
   url: 'https://online-auto.rusfinance.ru/OnlineApproval'
@@ -17,15 +17,15 @@ export class ApiService {
   constructor(private http: Http) { }
 
   public get<T>(url: string, params?: IMap<any>): Promise<T> {
-    return mapRequest<T>(this.http.get(this.getApiUrl(url), this.getRequestOptions(params)));
+    return getRequest<T>(this.http.get(this.getApiUrl(url), this.getRequestOptions(params)));
   }
 
   public delete<T>(url: string, params?: IMap<any>): Promise<T> {
-    return mapRequest<T>(this.http.delete(this.getApiUrl(url), this.getRequestOptions(params)));
+    return getRequest<T>(this.http.delete(this.getApiUrl(url), this.getRequestOptions(params)));
   }
 
   public post<T>(url: string, data?: any, params?: IMap<any>): Promise<T> {
-    return mapRequest<T>(this.http.post(this.getApiUrl(url), data, this.getRequestOptions(params)));
+    return getRequest<T>(this.http.post(this.getApiUrl(url), data, this.getRequestOptions(params)));
   }
 
   public postBlob<T>(url: string, data?: any, params?: IMap<any>): Promise<T> {
@@ -35,7 +35,7 @@ export class ApiService {
   }
 
   public put<T>(url: string, data?: any, params?: IMap<any>): Promise<T> {
-    return mapRequest<T>(this.http.put(this.getApiUrl(url), data, this.getRequestOptions(params)));
+    return getRequest<T>(this.http.put(this.getApiUrl(url), data, this.getRequestOptions(params)));
   }
 
   private getApiUrl(url: string): string {

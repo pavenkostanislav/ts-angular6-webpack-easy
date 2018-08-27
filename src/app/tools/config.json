@@ -1,0 +1,6 @@
+{
+    "log": {
+        "level": "DEBUG",
+        "hideFields": "schema,details"
+      }
+}

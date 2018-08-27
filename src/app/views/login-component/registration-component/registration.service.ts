@@ -8,6 +8,7 @@ export class RegistrationService {
 	constructor(private appSrv: AppService) { }
 
 	async createUser(account: IRegistrationForm, funSuccess: any): Promise<void> {
+		this.appSrv.log.info('service', 'Logger created');
 		if (!account) {
 			return Promise.reject(this.appSrv.getMsgErrors('404'));
 		}
@@ -16,7 +17,7 @@ export class RegistrationService {
 				account
 			}
 		};
-		this.appSrv.log('старт 1.4.1_createUser');
+		this.appSrv.log.debug('service','старт 1.4.1_createUser');
 
 		const requestPost: IRequestPost = {
 			firstName: this.appSrv.data.registration.account.firstName,
@@ -39,7 +40,7 @@ export class RegistrationService {
 			return Promise.reject(this.appSrv.getMsgErrors('404'));
 		}
 		this.appSrv.data.registration = { account };
-		this.appSrv.log('старт 1.4.1_updateUser');
+		this.appSrv.log.debug('service', 'старт 1.4.1_updateUser');
 		const requestPut: IRequestPut = {
 			account: {
 				birthday: this.appSrv.data.registration.account.birthday
@@ -64,19 +65,19 @@ export class RegistrationService {
 				requestPut
 			}
 		};
-		Promise.resolve(this.appSrv.restJsonRequestOnlineApproval('PUT', '/user/user', JSON.stringify(this.appSrv.data.api.user.requestPut), null, this.checkApplication));
+		// Promise.resolve(this.appSrv.restJsonRequestOnlineApproval('PUT', '/user/user', JSON.stringify(this.appSrv.data.api.user.requestPut), null, this.checkApplication));
 	};
 
 	//1.4.1 (4)
 	checkApplication = (response: any, funSuccess: any) => {
-		this.appSrv.log('старт 1.4.1_checkApplication');
+		this.appSrv.log.debug('service', 'старт 1.4.1_checkApplication');
 		var pHttpParams = new HttpParams().set('timeWait', this.appSrv.timeWait);
-		this.appSrv.restJsonRequestOnlineApproval('GET', '/user/checkApplication', {}, pHttpParams, this.goToRegistrationFormSecondPage);
+		// this.appSrv.restJsonRequestOnlineApproval('GET', '/user/checkApplication', {}, pHttpParams, this.goToRegistrationFormSecondPage);
 	}
 
 	//1.4.1 (5)
 	goToRegistrationFormSecondPage = async (response: any, funSuccess: any) => {
-		this.appSrv.log('старт 1.4.1_fun_5');
+		this.appSrv.log.debug('service', 'старт 1.4.1_fun_5');
 		if (response['can_create_application_flag'] == false) { this.appSrv.funErrorViewUser(response['can_create_application_message']); }
 		else {
 			//перейти на вторую форму регистрации

@@ -34,10 +34,13 @@
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
+    "@types/bunyan": "^1.8.4",
     "@types/lodash": "^4.14.116",
     "@types/node": "^10.0.4",
     "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^5.0.0",
+    "bunyan": "^1.8.12",
+    "bunyan-console-formatted-stream": "^1.0.0",
     "css-loader": "^1.0.0",
     "file-loader": "^1.1.11",
     "html-loader": "^0.5.1",

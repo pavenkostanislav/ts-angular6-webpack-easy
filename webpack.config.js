@@ -5,6 +5,9 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   mode: 'development',
+  node: {
+    fs: 'empty'
+  },
   devtool: 'eval',
   entry: {
     'polyfills': './src/polyfills.ts',
