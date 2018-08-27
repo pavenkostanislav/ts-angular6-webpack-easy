@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../../app-component/app.service';
-import { generateTestAccount } from '../../../../../spec/generateTestData';
-import { pattern } from '../../../dictionaries';
-import { RegistrationService } from '../registration-component/registration.service';
 
 @Component({
-    selector: 'passport-component',
-    templateUrl: './passport.component.html',
-    styleUrls: ['./passport.component.scss']
+	selector: 'passport-component',
+	templateUrl: './passport.component.html',
+	styleUrls: ['./passport.component.scss']
 })
 export class PassportComponent implements OnInit {
 	form: FormGroup;
@@ -17,21 +14,74 @@ export class PassportComponent implements OnInit {
 		private _formBuilder: FormBuilder) { };
 
 	ngOnInit(): void {
-
-		const testAccount = generateTestAccount();
-
+		// const passportForm: IPassportForm = {
+		// 	passport: {
+		// 		docSerial: '',
+		// 		docNumber: '',
+		// 		docIssueDate: '',
+		// 		docDepartmentCode: '',
+		// 		docDepartment: '',
+		// 		consentUseSimpleSignature: true,
+		// 		consentUseSimpleSignatureSms: ''
+		// 	},
+		// 	condition: {
+		// 		consentBkiRequestB1: false,
+		// 		consentProcessPersDataB1: false
+		// 	},
+		// 	account_id: this.appSrv.data.registration.account.account_id
+		// }
 		this.form = this._formBuilder.group({
-			lastName: [testAccount.lastName, [Validators.required, Validators.pattern(pattern['user.lastName'])]],
-			firstName: [testAccount.firstName, [Validators.required, Validators.pattern(pattern['user.firstName'])]],
-			patronymic: [testAccount.patronymic, [Validators.required, Validators.pattern(pattern['user.patronymic'])]],
-			phoneMobile: [testAccount.phoneMobile, [Validators.required, Validators.pattern(pattern['user.phoneMobile'])]],
-			email: [testAccount.email, [Validators.required, Validators.pattern(pattern['user.email'])]],
-			birthday: [testAccount.birthday, [Validators.required, Validators.pattern(pattern['user.birthday'])]],
-			conditionPassed: [testAccount.conditionPassed, [Validators.required, Validators.pattern(pattern['user.conditionPassed'])]]
+			docSerial: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docSerial'])]],
+			docNumber: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docNumber'])]],
+			docIssueDate: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docIssueDate'])]],
+			docDepartmentCode: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docDepartmentCode'])]],
+			docDepartment: ['', [Validators.required]],
+			consentUseSimpleSignature: [false, [Validators.required, Validators.pattern(this.appSrv.patterns['user.consentUseSimpleSignature'])]],
+			consentUseSimpleSignatureSms: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.consentUseSimpleSignatureSms'])]],
+			consentBkiRequestB1: [false, [Validators.required, Validators.pattern(this.appSrv.patterns['user.consentBkiRequestB1'])]],
+			consentProcessPersDataB1: [false, [Validators.required, Validators.pattern(this.appSrv.patterns['user.consentProcessPersDataB1'])]]
 		});
 	}
+	// Отметка поля «Соглашение об использовании простой электронной подписи»
+	confirmTypeCode = async () => {
+		this.appSrv.api.log.debug('view', '1.4.1', this.form.value);
+		if (this.form.valid) {
+			// #todo service
+			/*
+				1.	Вызывается сервис /user/factor с параметром confirmTypeCode = “PASSPORT”
+				a.	Если статус ответа не 200, выводится ошибка
+				2.	Предоставляется возможность ввести sms-код или запросить его повторно
+			*/
+		}
+		this.appSrv.api.log.debug('view', '1.4.1', `valid: ${this.form.valid}`);
+	};
+	// Нажатие на ссылку «Выслать повторно»
+	sendSms = async () => {
+		this.appSrv.api.log.debug('view', '1.4.1', this.form.value);
+		if (this.form.valid) {
+			// #todo service
+			/*
+				1.	Вызывается сервис /user/factor с параметром confirmTypeCode = “PASSPORT”
+				a.	Если статус ответа не 200, выводится ошибка
+			*/
+		}
+		this.appSrv.api.log.debug('view', '1.4.1', `valid: ${this.form.valid}`);
+	};
+	save = async () => {
+		this.appSrv.api.log.debug('view', '1.4.1', this.form.value);
+		if (this.form.valid) {
+			// #todo service
+			/*
+				1.	Вызывается сервис изменения данных пользователя /user/user, метод PUT с передачей параметров passport.*, condition.* и account_id в теле запроса
+				a.	Если статус ответа не 200, выводится ошибка, выполнение прерывается
+				2.	Вызывается сервис проверки возможности создания анкеты для клиента /user/checkApplication
+				a.	Если статус ответа не 200, выводится ошибка, выполнение прерывается.
+				3.	Получаем из ответа can_create_application_flag и can_create_application_message
+				a.	Если can_create_application_flag = false, выводим сообщение из can_create_application_message.
+			*/
+		}
+		this.appSrv.api.log.debug('view', '1.4.1', `valid: ${this.form.valid}`);
+	};
 
-	save = async () => {};
-	
 	changeValue = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
 }

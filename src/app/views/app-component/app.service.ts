@@ -1,18 +1,18 @@
 ﻿import { Injectable } from '@angular/core';
-import { msgErrors } from '../../dictionaries';
+import { msgErrors, pattern } from '../../dictionaries';
 import { IData, IMap, IPage } from '../../interfaces';
 import { ApiService } from '../../services/api.service';
 import { Page } from '../../types';
+import { mask } from '../../dictionaries/mask.dictonary';
 
 @Injectable()
 export class AppService {
-
 	public data: IData;
+	public patterns: IMap<RegExp>;
 
 	defaultPage(show = false): IPage {
 		return { show };
 	}
-
 	public pages: IMap<IPage> = {
 		'login': this.defaultPage(),
 		'passport': this.defaultPage(),
@@ -20,10 +20,16 @@ export class AppService {
 	};
 
 	private lastPage: Page = null;
-	constructor(public api: ApiService) { }
+	constructor(public api: ApiService) { 
+		this.patterns = pattern;
+	}
 
 	getMsgErrors(name: string) {
 		return msgErrors[name];
+	}
+
+	getMasks(name: string): any[] {
+		return mask[name];
 	}
 
 	getPagesInfo(name: string): boolean {

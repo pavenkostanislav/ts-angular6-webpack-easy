@@ -8,14 +8,18 @@ import { AppService } from '../../views/app-component/app.service';
   templateUrl: 'input-phone.component.html'
 })
 export class InputPhoneComponent {
-  focused: boolean = true;
-  getPhoneNumberMask = ['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
-  errorMessage: string;
-  constructor(appSrv: AppService) {
+  @Input() phoneControl: AbstractControl;
+
+  @Output() onChanged = new EventEmitter<AbstractControl>();
+
+  focused: boolean = true;errorMessage: string;
+
+  constructor(private appSrv: AppService) {
     this.errorMessage = appSrv.getMsgErrors('notValidValue');
   }
-  @Input() phoneControl: AbstractControl;
-  @Output() onChanged = new EventEmitter<AbstractControl>();
+  
+  getPhoneNumberMask = () => this.appSrv.getMasks('user.phone');
+
   onNgModelChange(value: string) {
     this.phoneControl.setValue(this.unMask(value));
     this.onChanged.emit(this.phoneControl);

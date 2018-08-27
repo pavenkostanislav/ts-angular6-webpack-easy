@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { generateTestAccount } from '../../../../../spec/generateTestData';
-import { pattern } from '../../../dictionaries';
 import { AppService } from '../../app-component/app.service';
 import { RegistrationService } from './registration.service';
 
@@ -21,13 +20,13 @@ export class RegistrationComponent implements OnInit {
 		const testAccount = generateTestAccount();
 
 		this.form = this._formBuilder.group({
-			lastName: [testAccount.lastName, [Validators.required, Validators.pattern(pattern['user.lastName'])]],
-			firstName: [testAccount.firstName, [Validators.required, Validators.pattern(pattern['user.firstName'])]],
-			patronymic: [testAccount.patronymic, [Validators.required, Validators.pattern(pattern['user.patronymic'])]],
-			phoneMobile: [testAccount.phoneMobile, [Validators.required, Validators.pattern(pattern['user.phoneMobile'])]],
-			email: [testAccount.email, [Validators.required, Validators.pattern(pattern['user.email'])]],
-			birthday: [testAccount.birthday, [Validators.required, Validators.pattern(pattern['user.birthday'])]],
-			conditionPassed: [testAccount.conditionPassed, [Validators.required, Validators.pattern(pattern['user.conditionPassed'])]]
+			lastName: [testAccount.lastName, [Validators.required, Validators.pattern(this.appSrv.patterns['user.lastName'])]],
+			firstName: [testAccount.firstName, [Validators.required, Validators.pattern(this.appSrv.patterns['user.firstName'])]],
+			patronymic: [testAccount.patronymic, [Validators.required, Validators.pattern(this.appSrv.patterns['user.patronymic'])]],
+			phoneMobile: [testAccount.phoneMobile, [Validators.required, Validators.pattern(this.appSrv.patterns['user.phoneMobile'])]],
+			email: [testAccount.email, [Validators.required, Validators.pattern(this.appSrv.patterns['user.email'])]],
+			birthday: [testAccount.birthday, [Validators.required, Validators.pattern(this.appSrv.patterns['user.birthday'])]],
+			conditionPassed: [testAccount.conditionPassed, [Validators.required, Validators.pattern(this.appSrv.patterns['user.conditionPassed'])]]
 		});
 	}
 

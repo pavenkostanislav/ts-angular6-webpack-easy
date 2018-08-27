@@ -1,17 +1,57 @@
 ﻿<form [formGroup]="form" (ngSubmit)="save()">
-	<input-text-box  [textControl]="form.get('lastName')" 		(onChanged)="changeValue('lastName', $event)"></input-text-box>
-	<input-text  [textControl]="form.get('firstName')" 		(onChanged)="changeValue('firstName', $event)" 		[title]="'Имя'"></input-text>
-	<input-text  [textControl]="form.get('patronymic')" 	(onChanged)="changeValue('patronymic', $event)" 	[title]="'Отчество'"></input-text>
-	<input-date  [dateControl]="form.get('birthday')" 		(onChanged)="changeValue('birthday', $event)"		[title]="'Дата рождения'"></input-date>
-	<date-picker  [dateControl]="form.get('birthday')" 		(onChanged)="changeValue('birthday', $event)"		[title]="'Дата рождения'"></date-picker>
-	<input-phone [phoneControl]="form.get('phoneMobile')" 	(onChanged)="changeValue('phoneMobile', $event)"></input-phone>
-	<input-text  [textControl]="form.get('email')" 			(onChanged)="changeValue('email', $event)"			[title]="'Email'"></input-text>
-	<check-box 	 [checkbox]="form.get('conditionPassed')" 	(onChanged)="changeValue('conditionPassed', $event)">
-		<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на обработку персональных данных (для получения информации
-			о продуктах и услугах банка)</a>
-	</check-box>
+	<div class="form-group row">
+		<label class="col-sm-12 col-md-4" for="textControl">Паспорт</label>
+		<div class="col-sm-12 col-md-3">
+			<input-text-box-mask [placeholder]="'Серия'" [textMaskName]="'user.docSerial'" [textControl]="form.get('docSerial')" (onChanged)="changeValue('docSerial', $event)"></input-text-box-mask>
+		</div>
+		<div class="col-sm-12 col-md-3">
+			<input-text-box [placeholder]="'Номер'" [textControl]="form.get('docNumber')" (onChanged)="changeValue('docNumber', $event)"></input-text-box>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-12 offset-md-4  col-md-6">
+			<input-text-box [placeholder]="'Кем выдан'" [textControl]="form.get('docDepartment')" (onChanged)="changeValue('docDepartment', $event)"></input-text-box>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col-sm-12 offset-md-4  col-md-3">
+			<input-text-box [placeholder]="'Код подразделения'" [textControl]="form.get('docIssueDate')" (onChanged)="changeValue('docIssueDate', $event)"></input-text-box>
+		</div>
+		<div class="col-sm-12 col-md-3">
+			<input-text-box [placeholder]="'Когда выдан'" [textControl]="form.get('docDepartmentCode')" (onChanged)="changeValue('docDepartmentCode', $event)"></input-text-box>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<check-box [checkbox]="form.get('consentUseSimpleSignature')" (onChanged)="changeValue('consentUseSimpleSignature', $event)">
+			<a target="_blank" href="https://www.rusfinancebank.ru">Пользовательское соглашение (соглашение об использовании простой
+				электронной подписи)</a>
+		</check-box>
+	</div>
+
+	<div class="form-group row">
+		<label class="col-sm-12 col-md-4" for="textControl">Ввести СМС код</label>
+		<div class="col-sm-12 col-md-6">
+			<input-text-box [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)"></input-text-box>
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<check-box [checkbox]="form.get('consentBkiRequestB1')" (onChanged)="changeValue('consentBkiRequestB1', $event)">
+			<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на обработку персональных данных (расширенное согласие
+				по перечню данных и целях обработки)</a>
+		</check-box>
+	</div>
+
+	<div class="form-group row">
+		<check-box [checkbox]="form.get('consentProcessPersDataB1')" (onChanged)="changeValue('consentProcessPersDataB1', $event)">
+			<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на БКИ (целевое для конкретного банка)</a>
+		</check-box>
+	</div>
 
 	<div class="col-sm-12 offset-md-3 col-md-6 offset-md-3">
-		<input type="submit" class="btn btn-danger" value="Войти" [disabled]="!form.valid" />
+		<input type="submit" class="btn btn-info" value="Войти" [disabled]="!form.valid" />
 	</div>
 </form>

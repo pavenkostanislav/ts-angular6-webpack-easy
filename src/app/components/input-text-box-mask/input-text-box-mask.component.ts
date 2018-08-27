@@ -4,23 +4,26 @@ import { AppService } from '../../views/app-component/app.service';
 @Component({
   moduleId: module.id,
   encapsulation: ViewEncapsulation.None,
-  selector: 'input-text',
-  templateUrl: 'input-text.component.html'
+  selector: 'input-text-box-mask',
+  templateUrl: 'input-text-box-mask.component.html'
 })
-export class InputTextComponent {
-  @Input() title = 'caption';
+export class InputTextBoxMaskComponent {
+  @Input() title = '';
   @Input() placeholder = '';
   @Input() textControl: AbstractControl;
-  @Input() textMask: RegExp;
+  @Input() textMaskName: string;
+
 
   @Output() onChanged = new EventEmitter<AbstractControl>();
 
   focused: boolean = true;
   errorMessage: string;
 
-  constructor(appSrv: AppService) {
+  constructor(private appSrv: AppService) {
     this.errorMessage = appSrv.getMsgErrors('notValidValue');
   }
+  
+  getMask = () => this.appSrv.getMasks(this.textMaskName);
 
   onNgModelChange(value: string) {
     this.onChanged.emit(this.textControl);

@@ -8,14 +8,17 @@ import { AppService } from '../../views/app-component/app.service';
   templateUrl: 'input-text-box.component.html'
 })
 export class InputTextBoxComponent {
+  @Input() title = '';
+  @Input() placeholder = '';
   @Input() textControl: AbstractControl;
+
 
   @Output() onChanged = new EventEmitter<AbstractControl>();
 
   focused: boolean = true;
   errorMessage: string;
 
-  constructor(appSrv: AppService) {
+  constructor(private appSrv: AppService) {
     this.errorMessage = appSrv.getMsgErrors('notValidValue');
   }
 

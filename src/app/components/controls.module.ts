@@ -11,6 +11,7 @@ import { InputTextBoxComponent } from './input-text-box/input-text-box.component
 import { InputTextComponent } from './input-text/input-text.component';
 import { TabComponent } from './tabs/tab/tab.component';
 import { TabsComponent } from './tabs/tabs.component';
+import { InputTextBoxMaskComponent } from './input-text-box-mask/input-text-box-mask.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { TabsComponent } from './tabs/tabs.component';
     CheckboxComponent,
     InputDateComponent,
     DatePickerComponent,
-    InputTextBoxComponent
+    InputTextBoxComponent,
+    InputTextBoxMaskComponent
   ],
   exports: [
     TabComponent,
@@ -37,7 +39,8 @@ import { TabsComponent } from './tabs/tabs.component';
     CheckboxComponent,
     InputDateComponent,
     DatePickerComponent,
-    InputTextBoxComponent
+    InputTextBoxComponent,
+    InputTextBoxMaskComponent
   ]
 })
 export class ControlModule { }

@@ -9,4 +9,5 @@ export * from './routeUrl.interface';
 export * from './logger.interface';
 export * from './config.interface';
 export * from './userResponse.interface';
+export * from './passportForm.interface';
 
