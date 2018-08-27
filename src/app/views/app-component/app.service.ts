@@ -49,4 +49,15 @@ export class AppService {
 		this.pages[next].show = true;
 		this.lastPage = next;
 	}
+
+	public showError = (arg: any) => {
+		this.log.error('service', '1.3', 'Обработка ошибок');
+		if (arg.error_code && arg.error_message) {
+			alert(arg.error_message);
+		}
+		else {
+			alert(this.getMsgErrors('noMessage'));
+		}
+
+	}
 }

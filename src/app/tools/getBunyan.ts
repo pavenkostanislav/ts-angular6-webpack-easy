@@ -8,21 +8,21 @@ export function getBunyan(): Logger {
   const logger = bunyan.createLogger(createBunyanLogger());
 
   const result: Logger = {
-    info: (layer: string, message: string, ...params: any[]) => logger.info({ layer }, message, ...params),
-    debug: (layer: string, message: string, ...params: any[]) => logger.debug({ layer }, message, ...params),
-    error: (layer: string, error: any, ...params) => {
-      if(!!error && error.code === 500){
+    info: (layer: string, paragraph: string, message: string, ...params: any[]) => logger.info({ layer, paragraph }, message, ...params),
+    debug: (layer: string, paragraph: string, message: string, ...params: any[]) => logger.debug({ layer, paragraph }, message, ...params),
+    error: (layer: string, paragraph: string, error: any, ...params) => {
+      if (!!error && error.code === 500) {
         logger.fatal({ layer }, `Fatal error ${error.code}, ${error.message} `, error, ...params)
       }
       else {
-      error.code
-        ? logger.error({ layer }, `Error ${error.code}, ${error.message} `, error, ...params)
-        : logger.error({ layer }, error, ...params);
+        error.code
+          ? logger.error({ layer, paragraph }, `Error ${error.code}, ${error.message} `, error, ...params)
+          : logger.error({ layer, paragraph }, error, ...params);
       }
     }
   };
 
-  result.info('init', 'Logger created');
+  result.info('init', null, 'Logger created');
   return result;
 }
 

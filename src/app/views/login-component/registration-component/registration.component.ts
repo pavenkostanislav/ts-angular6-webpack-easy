@@ -42,7 +42,7 @@ export class RegistrationComponent implements OnInit {
 		console.log(this.form.valid);
 	}
 	//1.4.1 (2,3)
-	updateUser = async (response: any, funSuccess: any) => await new RegistrationService(this.appSrv).updateUser(this.form.value);
+	updateUser = async (response: any, funSuccess: any) => await new RegistrationService(this.appSrv).updateUserBirthday(this.form.value);
 
 	changeValue = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
 }

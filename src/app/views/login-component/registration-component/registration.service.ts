@@ -1,4 +1,3 @@
-import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IRegistrationForm, IRequestPost, IRequestPut, IUserResponse } from '../../../interfaces';
 import { AppService } from '../../app-component/app.service';
@@ -8,16 +7,15 @@ export class RegistrationService {
 	constructor(private appSrv: AppService) { }
 
 	async createUser(account: IRegistrationForm, funSuccess: any): Promise<void> {
-		this.appSrv.log.info('service', 'Logger created');
+		this.appSrv.log.debug('service', '1.4.1', 'Вызывается сервис /user/user, метод POST с передачей параметров в теле запроса');
 		if (!account) {
-			return Promise.reject(this.appSrv.getMsgErrors('404'));
+			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));
 		}
 		this.appSrv.data = {
 			registration: {
 				account
 			}
 		};
-		this.appSrv.log.debug('service','старт 1.4.1_createUser');
 
 		const requestPost: IRequestPost = {
 			firstName: this.appSrv.data.registration.account.firstName,
@@ -27,61 +25,47 @@ export class RegistrationService {
 			email: this.appSrv.data.registration.account.email,
 			conditionPassed: this.appSrv.data.registration.account.conditionPassed
 		};
-		this.appSrv.data.api = {
-			user: {
-				requestPost
-			}
-		};
-		this.appSrv.data.api.user.resposePost = await this.appSrv.api.post<IUserResponse>('user/user', this.appSrv.data.api.user.requestPost);
-		//Promise.resolve(this.appSrv.restJsonRequestOnlineApproval('POST', '/user/user', this.appSrv.data.api.user.userPost, null, funSuccess));
-	};
-	async updateUser(account: IRegistrationForm): Promise<void> {
-		if (account) {
-			return Promise.reject(this.appSrv.getMsgErrors('404'));
+		const res = await this.appSrv.api.post<IUserResponse>('user/user', requestPost);
+		if (res && res.account_id > 0) {
+			this.appSrv.log.debug('service', '1.4.1 (2)', 'Получаем из ответа значение account_id, сохраняем на клиенте');
+			this.appSrv.data.registration.account.account_id = res.account_id;
+			await this.updateUserBirthday(this.appSrv.data.registration.account)
+		} else {
+			this.appSrv.log.error('service', '1.4.1 (1)', 'Выводится ошибка, выполнение прерывается');
+			this.appSrv.showError(res);
+			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));
 		}
+	};
+	async updateUserBirthday(account: IRegistrationForm): Promise<void> {
+		this.appSrv.log.debug('service', '1.4.1 (3)', 'Вызывается сервис изменения данных пользователя /user/user, метод PUT с передачей параметров account_id и birthday в теле запроса');
 		this.appSrv.data.registration = { account };
-		this.appSrv.log.debug('service', 'старт 1.4.1_updateUser');
 		const requestPut: IRequestPut = {
 			account: {
 				birthday: this.appSrv.data.registration.account.birthday
 			},
-			passport: {
-				docSerial: "string",
-				docNumber: "string",
-				docIssueDate: "string",
-				docDepartmentCode: "string",
-				docDepartment: "string",
-				consentUseSimpleSignature: true,
-				consentUseSimpleSignatureSms: "string"
-			},
-			condition: {
-				consentBkiRequestB1: true,
-				consentProcessPersDataB1: true
-			},
-			account_id: 0
+			account_id: this.appSrv.data.registration.account.account_id
 		};
-		this.appSrv.data.api = {
-			user: {
-				requestPut
-			}
-		};
-		// Promise.resolve(this.appSrv.restJsonRequestOnlineApproval('PUT', '/user/user', JSON.stringify(this.appSrv.data.api.user.requestPut), null, this.checkApplication));
-	};
 
-	//1.4.1 (4)
-	checkApplication = (response: any, funSuccess: any) => {
-		this.appSrv.log.debug('service', 'старт 1.4.1_checkApplication');
-		var pHttpParams = new HttpParams().set('timeWait', this.appSrv.timeWait);
-		// this.appSrv.restJsonRequestOnlineApproval('GET', '/user/checkApplication', {}, pHttpParams, this.goToRegistrationFormSecondPage);
-	}
-
-	//1.4.1 (5)
-	goToRegistrationFormSecondPage = async (response: any, funSuccess: any) => {
-		this.appSrv.log.debug('service', 'старт 1.4.1_fun_5');
-		if (response['can_create_application_flag'] == false) { this.appSrv.funErrorViewUser(response['can_create_application_message']); }
-		else {
-			//перейти на вторую форму регистрации
-			this.appSrv.nextPage('passport');
+		const res = await this.appSrv.api.put<any>('user/user', requestPut);
+		if (res) {
+			this.appSrv.log.debug('service', '1.4.1 (4)', 'Вызывается сервис проверки возможности создания анкеты для клиента /user/checkApplication');
+			await this.checkApplication()
+		} else {
+			this.appSrv.log.error('service', '1.4.1 (3)', 'Выводится ошибка, выполнение прерывается');
+			this.appSrv.showError(res);
+			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));
 		}
-	}
+	};
+	async checkApplication(): Promise<void> {
+		this.appSrv.log.debug('service', '1.4.1 (3)', 'Вызывается сервис изменения данных пользователя /user/user, метод PUT с передачей параметров account_id и birthday в теле запроса');
+
+		const timeWait = this.appSrv.timeWait;
+		const res = await this.appSrv.api.get<any>('user/user', { timeWait });
+		if (res['can_create_application_flag'] == false) { 
+			this.appSrv.log.error('service', '1.4.1 (3)', 'Выводится ошибка, выполнение прерывается');
+			this.appSrv.showError(res['can_create_application_message']); 
+			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));
+		}
+		this.appSrv.nextPage('passport');
+	};
 }

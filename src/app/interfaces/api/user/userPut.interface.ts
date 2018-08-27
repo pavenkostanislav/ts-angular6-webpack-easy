@@ -2,7 +2,7 @@ export interface IRequestPut {
     account: {
         birthday: string
     },
-    passport: {
+    passport?: {
         docSerial: string,
         docNumber: string,
         docIssueDate: string,
@@ -11,7 +11,7 @@ export interface IRequestPut {
         consentUseSimpleSignature: boolean,
         consentUseSimpleSignatureSms: string
     },
-    condition: {
+    condition?: {
         consentBkiRequestB1: boolean,
         consentProcessPersDataB1: boolean
     },

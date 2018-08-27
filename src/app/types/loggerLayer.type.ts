@@ -1,1 +1,6 @@
-export type LoggerLayer = 'init' | 'view' | 'service' | 'api' | 'tool';
+export type LoggerLayer =
+    'init' |
+    'view' |
+    'service' |
+    'api' |
+    'tool';
