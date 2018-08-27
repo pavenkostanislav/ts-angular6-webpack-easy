@@ -4,9 +4,7 @@
         "hideFields": "schema,details"
     },
     "environment" : {
-        "url": "https://online-auto.rusfinance.ru/OnlineApproval/api",
-        "time": {
-            "wait": "33"
-        }
+        "url": "https://online-auto.rusfinance.ru/OnlineApproval",
+        "timeWait": "30"
     }
 }

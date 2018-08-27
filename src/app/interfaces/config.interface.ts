@@ -5,10 +5,6 @@ export interface IConfig {
     };
     environment : {
         url: string;
-        time: {
-            wait: number;
-        }
+        timeWait: number;
     }
 }
-
-

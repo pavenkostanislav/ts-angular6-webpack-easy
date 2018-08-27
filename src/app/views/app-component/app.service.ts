@@ -8,12 +8,8 @@ import { Page } from '../../types';
 
 @Injectable()
 export class AppService {
-	public timeWait: string = '33';
 
 	public data: IData;
-
-	public log: ILogger;
-
 
 	defaultPage(show = false): IPage {
 		return { show };
@@ -32,7 +28,6 @@ export class AppService {
 		configSrv: ConfigService
 	) {
 		this.config = configSrv.getConfig();
-		this.log = getBunyan(this.config);
 	}
 
 	getMsgErrors(name: string) {
@@ -50,7 +45,7 @@ export class AppService {
 	}
 
 	public showError = (arg: any) => {
-		this.log.error('service', '1.3', 'Обработка ошибок');
+		this.api.log.error('service', '1.3', 'Обработка ошибок');
 		if (arg.error_code && arg.error_message) {
 			alert(arg.error_message);
 		}
