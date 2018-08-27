@@ -20,7 +20,7 @@
 			<input-text-box [placeholder]="'Код подразделения'" [textControl]="form.get('docIssueDate')" (onChanged)="changeValue('docIssueDate', $event)"></input-text-box>
 		</div>
 		<div class="col-sm-12 col-md-3">
-			<input-text-box [placeholder]="'Когда выдан'" [textControl]="form.get('docDepartmentCode')" (onChanged)="changeValue('docDepartmentCode', $event)"></input-text-box>
+			<input-date-picker [dateControl]="form.get('docDepartmentCode')" (onChanged)="changeValue('docDepartmentCode', $event)"></input-date-picker>
 		</div>
 	</div>
 
