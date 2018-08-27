@@ -28,4 +28,4 @@ to start the project, run "npm dev" and use "/login" route
 
 *install angular2-text-mask package "npm i angular2-text-mask --save-dev" to add a mask for entering tags on the DOM markup. Example: phone
 
-*install bunyan & bunyan-console-formatted-stream for visibility logger "npm i bunyan @types/bunyan bunyan-console-formatted-stream --save-dev"
+*install bunyan & bunyan-console-formatted-stream for visibility logger "npm i bunyan @types/bunyan bunyan-console-formatted-stream --save-dev" and in webpack.config.js:  "node: { fs: 'empty' }"
