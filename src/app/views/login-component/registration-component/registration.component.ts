@@ -32,14 +32,14 @@ export class RegistrationComponent implements OnInit {
 	}
 
 	createUser = async () => {
-		console.log(this.form.value);
+		this.appSrv.api.log.debug('view', '1.4.1', this.form.value);
 		if (this.form.valid) {
 			await new RegistrationService(this.appSrv).createUser(this.form.value);
 		}
 
-		console.log(this.form.valid);
+		this.appSrv.api.log.debug('view', '1.4.1', `valid: ${this.form.valid}`);
 	};
-	
+
 	changeValue = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
 }
 
