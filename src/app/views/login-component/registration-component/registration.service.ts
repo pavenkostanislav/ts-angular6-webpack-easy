@@ -54,7 +54,7 @@ export class RegistrationService {
 	async checkApplication(): Promise<void> {
 		this.appSrv.api.log.debug('service', '1.4.1 (3)', 'Вызывается сервис изменения данных пользователя /user/user, метод PUT с передачей параметров account_id и birthday в теле запроса');
 
-		const timeWait = this.appSrv.config.environment.timeWait;
+		const timeWait = this.appSrv.api.config.environment.timeWait;
 		const res = await this.appSrv.api.get<any>('user/user', { timeWait });
 		if (res['can_create_application_flag'] == false) {
 			this.appSrv.api.log.error('service', '1.4.1 (3)', 'Выводится ошибка, выполнение прерывается');

@@ -1,9 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { msgErrors } from '../../dictionaries';
-import { IData, ILogger, IMap, IPage, IConfig } from '../../interfaces';
+import { IData, IMap, IPage } from '../../interfaces';
 import { ApiService } from '../../services/api.service';
-import { ConfigService } from '../../services/config.service';
-import { getBunyan } from '../../tools/getBunyan';
 import { Page } from '../../types';
 
 @Injectable()
@@ -22,13 +20,7 @@ export class AppService {
 	};
 
 	private lastPage: Page = null;
-	public config: IConfig;
-	constructor(
-		public api: ApiService,
-		configSrv: ConfigService
-	) {
-		this.config = configSrv.getConfig();
-	}
+	constructor(public api: ApiService) { }
 
 	getMsgErrors(name: string) {
 		return msgErrors[name];

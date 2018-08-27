@@ -13,14 +13,14 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class ApiService {
-  private config: IConfig;
+  public config: IConfig;
   public log: ILogger;
   constructor(
     private http: Http,
     configSrv: ConfigService
   ) {
     this.config = configSrv.getConfig();
-		this.log = getBunyan(this.config);
+    this.log = getBunyan(this.config);
   }
 
   public get<T>(url: string, params?: IMap<any>): Promise<T> {
@@ -75,7 +75,10 @@ export class ApiService {
       return <T>(<any>res)._body;
     }
     catch (e) {
-      return <T>(<any>res)._body;
+      const _res: T = <T>(<any>res)._body;
+      this.log.error('api', '1.3', _res);
+
+      return _res;
     }
   }
 }
