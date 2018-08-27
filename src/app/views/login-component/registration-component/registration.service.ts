@@ -46,7 +46,7 @@ export class RegistrationService {
 			account_id: this.appSrv.data.registration.account.account_id
 		};
 
-		await this.appSrv.api.put<any>('user/user', requestPut);
+		await this.appSrv.api.put<void>('user/user', requestPut);
 
 		this.appSrv.api.log.debug('service', '1.4.1 (4)', 'Вызывается сервис проверки возможности создания анкеты для клиента /user/checkApplication');
 		await this.checkApplication();

@@ -68,17 +68,17 @@ export class ApiService {
   }
 
   private getResponse<T>(res: Response): T {
+    const body: T = <T>(<any>res)._body
     try {
-      if (res.json) {
+      if (res.json && !!body) {
         return <T>res.json();
       }
-      return <T>(<any>res)._body;
+      return body;
     }
     catch (e) {
-      const _res: T = <T>(<any>res)._body;
-      this.log.error('api', '1.3', _res);
+      this.log.error('api', '1.3', body);
 
-      return _res;
+      return body;
     }
   }
 }
