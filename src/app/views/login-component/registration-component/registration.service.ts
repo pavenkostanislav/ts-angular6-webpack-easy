@@ -29,7 +29,7 @@ export class RegistrationService {
 		if (res && res.account_id > 0) {
 			this.appSrv.api.log.debug('service', '1.4.1 (2)', 'Получаем из ответа значение account_id, сохраняем на клиенте');
 			this.appSrv.data.registration.account.account_id = res.account_id;
-			await this.updateUserBirthday(this.appSrv.data.registration.account)
+			await this.updateUserBirthday(this.appSrv.data.registration.account);
 		} else {
 			this.appSrv.api.log.error('service', '1.4.1 (1)', 'Выводится ошибка, выполнение прерывается');
 			this.appSrv.showError(res);
