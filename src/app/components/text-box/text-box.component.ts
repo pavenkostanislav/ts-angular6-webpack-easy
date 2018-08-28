@@ -18,7 +18,7 @@ export class TextBoxComponent {
   focused: boolean = true;
   errorMessage: string;
 
-  constructor(private appSrv: AppService) {
+  constructor(appSrv: AppService) {
     this.errorMessage = appSrv.getMsgErrors('notValidValue');
   }
 

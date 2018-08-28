@@ -10,4 +10,7 @@ import { TextBoxComponent } from '../text-box/text-box.component';
 })
 export class InputTextComponent extends TextBoxComponent {
   @Input() title = '';
+  constructor(appSrv: AppService) {
+    super(appSrv);
+  }
 }
