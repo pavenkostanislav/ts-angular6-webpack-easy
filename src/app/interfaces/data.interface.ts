@@ -1,4 +1,4 @@
-import { IRequestPut, IRequestPost, IRegistrationState } from './';
+import { IRegistrationState } from './';
 
 export interface IData {
 	registration: IRegistrationState;

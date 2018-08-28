@@ -1,4 +1,3 @@
-export * from './api';
 export * from './data.interface';
 export * from "./group.interface";
 export * from "./map.interface";

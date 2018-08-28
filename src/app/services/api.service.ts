@@ -52,7 +52,11 @@ export class ApiService {
   }
 
   private getRequestOptions(params: IMap<any>): RequestOptions {
+    let headers: Headers = new Headers();
+        headers.append('Content-Type', 'application/json; charset=utf-8');
+
     const result = new RequestOptions({
+      headers,
       withCredentials: true
     });
     if (params) {
