@@ -22,6 +22,11 @@
             "type": "npm",
             "script": "start:sass-dev",
             "problemMatcher": []
+        },
+        {
+            "type": "npm",
+            "script": "compile:sass-watch",
+            "problemMatcher": []
         }
     ]
 }
