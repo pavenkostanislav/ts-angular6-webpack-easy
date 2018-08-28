@@ -34,8 +34,8 @@ export class PassportComponent implements OnInit {
 			docSerial: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docSerial'])]],
 			docNumber: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docNumber'])]],
 			docIssueDate: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docIssueDate'])]],
-			docDepartmentCode: ['', [Validators.required, this.validateDocDepartmentLength, Validators.pattern(this.appSrv.patterns['user.docDepartmentCode'])]],
-			docDepartment: ['', [Validators.required]],
+			docDepartmentCode: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docDepartmentCode'])]],
+			docDepartment: ['', [Validators.required, Validators.maxLength(255)]],
 			consentUseSimpleSignature: [false, [Validators.required, Validators.pattern(this.appSrv.patterns['user.consentUseSimpleSignature'])]],
 			consentUseSimpleSignatureSms: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.consentUseSimpleSignatureSms'])]],
 			consentBkiRequestB1: [false, [Validators.required, Validators.pattern(this.appSrv.patterns['user.consentBkiRequestB1'])]],
@@ -84,15 +84,4 @@ export class PassportComponent implements OnInit {
 	};
 
 	changeValue = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
-
-	validateDocDepartmentLength = (control: AbstractControl): ValidationErrors => {	
-		if (control.value > 0 || control.value <= 255) {
-			return {
-				'validPhoneLength': true
-			};
-		}
-	
-		return null;
-	}
-	
 }
