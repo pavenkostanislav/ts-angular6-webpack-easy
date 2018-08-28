@@ -9,6 +9,8 @@ import { PassportComponent } from './passport-component/passport.component';
 import { LoginComponent } from './login.component';
 import { TextMaskModule } from 'angular2-text-mask';
 import { NgbDateRuParserFormatter } from '../../tools/ngb-date-ru-parser-formatter';
+import { RegistrationService } from './registration-component/registration.service';
+import { PassportService } from './passport-component/passport.service';
 
 @NgModule({
   imports: [
@@ -31,6 +33,8 @@ import { NgbDateRuParserFormatter } from '../../tools/ngb-date-ru-parser-formatt
     PassportComponent
   ],
   providers: [
+    RegistrationService,
+    PassportService,
     {
       provide: NgbDateParserFormatter,
       useClass: NgbDateRuParserFormatter

@@ -27,15 +27,22 @@
 	</div>
 
 	<div class="form-group row">
-		<check-box [checkbox]="form.get('consentUseSimpleSignature')" (onChanged)="changeValue('consentUseSimpleSignature', $event)">
+		<check-box [checkbox]="form.get('consentUseSimpleSignature')" (onChanged)="confirmTypeCode('consentUseSimpleSignature', $event)">
 			<a target="_blank" href="https://www.rusfinancebank.ru">Пользовательское соглашение (соглашение об использовании простой
 				электронной подписи)</a>
 		</check-box>
 	</div>
-	<div class="form-group row">
+
+	<div *ngIf="form.value.consentUseSimpleSignature" class="form-group row">
 		<label class="col-sm-12 col-md-4" for="textControl">Ввести СМС код</label>
 		<div class="col-sm-12 col-md-6">
-			<text-box [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)"></text-box>
+			<div class="input-group">
+				<text-box [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)"></text-box>
+				<span class="input-group-btn">
+					<a (click)="sentSmsCode()" class="btn btn-link" type="button">Выслать повторно</a>
+				</span>
+			</div>
+			<hr />
 		</div>
 	</div>
 

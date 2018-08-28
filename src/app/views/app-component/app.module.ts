@@ -12,6 +12,7 @@ import { LoginModule } from '../login-component/login.module';
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
 import { AppService } from "./app.service";
+import { MenuComponent } from './menu-component/menu.component';
 
 
 @NgModule({
@@ -27,13 +28,21 @@ import { AppService } from "./app.service";
         ControlModule,
         HttpModule
     ],
-    exports: [AppComponent],
-    declarations: [AppComponent],
+    exports: [
+        AppComponent,
+        MenuComponent
+    ],
+    declarations: [
+        AppComponent,
+        MenuComponent
+    ],
     providers: [
         ConfigService,
         ApiService,
         AppService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [
+        AppComponent
+    ]
 })
 export class AppModule { }

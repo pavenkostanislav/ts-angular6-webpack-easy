@@ -13,6 +13,7 @@ export class RegistrationComponent implements OnInit {
 	form: FormGroup;
 
 	constructor(public appSrv: AppService,
+		private regSrv: RegistrationService,
 		private _formBuilder: FormBuilder) { };
 
 	ngOnInit(): void {
@@ -33,7 +34,7 @@ export class RegistrationComponent implements OnInit {
 	createUser = async () => {
 		this.appSrv.api.log.debug('view', '1.4.1', this.form.value);
 		if (this.form.valid) {
-			await new RegistrationService(this.appSrv).createUser(this.form.value);
+			await this.regSrv.createUser(this.form.value);
 		}
 
 		this.appSrv.api.log.debug('view', '1.4.1', `valid: ${this.form.valid}`);
