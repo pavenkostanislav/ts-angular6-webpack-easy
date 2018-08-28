@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators, ValidationErrors } from '@angular/forms';
 import { AppService } from '../../app-component/app.service';
 
 @Component({
@@ -34,7 +34,7 @@ export class PassportComponent implements OnInit {
 			docSerial: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docSerial'])]],
 			docNumber: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docNumber'])]],
 			docIssueDate: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docIssueDate'])]],
-			docDepartmentCode: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docDepartmentCode'])]],
+			docDepartmentCode: ['', [Validators.required, this.validateDocDepartmentLength, Validators.pattern(this.appSrv.patterns['user.docDepartmentCode'])]],
 			docDepartment: ['', [Validators.required]],
 			consentUseSimpleSignature: [false, [Validators.required, Validators.pattern(this.appSrv.patterns['user.consentUseSimpleSignature'])]],
 			consentUseSimpleSignatureSms: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.consentUseSimpleSignatureSms'])]],
@@ -84,4 +84,15 @@ export class PassportComponent implements OnInit {
 	};
 
 	changeValue = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
+
+	validateDocDepartmentLength = (control: AbstractControl): ValidationErrors => {	
+		if (control.value > 0 || control.value <= 255) {
+			return {
+				'validPhoneLength': true
+			};
+		}
+	
+		return null;
+	}
+	
 }

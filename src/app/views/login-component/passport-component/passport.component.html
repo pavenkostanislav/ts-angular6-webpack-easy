@@ -1,26 +1,28 @@
 ﻿<form [formGroup]="form" (ngSubmit)="save()">
+
 	<div class="form-group row">
 		<label class="col-sm-12 col-md-4" for="textControl">Паспорт</label>
 		<div class="col-sm-12 col-md-3">
-			<input-text-box-mask [placeholder]="'Серия'" [textMaskName]="'user.docSerial'" [textControl]="form.get('docSerial')" (onChanged)="changeValue('docSerial', $event)"></input-text-box-mask>
+			<text-box-mask [placeholder]="'Серия'" [textMaskName]="'user.docSerial'" [textControl]="form.get('docSerial')" (onChanged)="changeValue('docSerial', $event)"></text-box-mask>
 		</div>
 		<div class="col-sm-12 col-md-3">
-			<input-text-box [placeholder]="'Номер'" [textControl]="form.get('docNumber')" (onChanged)="changeValue('docNumber', $event)"></input-text-box>
+			<text-box-mask [placeholder]="'Номер'" [textMaskName]="'user.docNumber'" [textControl]="form.get('docNumber')" (onChanged)="changeValue('docNumber', $event)"></text-box-mask>
 		</div>
 	</div>
 
 	<div class="form-group row">
 		<div class="col-sm-12 offset-md-4  col-md-6">
-			<input-text-box [placeholder]="'Кем выдан'" [textControl]="form.get('docDepartment')" (onChanged)="changeValue('docDepartment', $event)"></input-text-box>
+			<text-box [placeholder]="'Кем выдан'" [textControl]="form.get('docDepartment')" (onChanged)="changeValue('docDepartment', $event)"></text-box>
 		</div>
 	</div>
 
 	<div class="form-group row">
 		<div class="col-sm-12 offset-md-4  col-md-3">
-			<input-text-box [placeholder]="'Код подразделения'" [textControl]="form.get('docIssueDate')" (onChanged)="changeValue('docIssueDate', $event)"></input-text-box>
+			<text-box-mask [placeholder]="'Код подразделения'" [textMaskName]="'user.docDepartmentCode'" [textControl]="form.get('docDepartmentCode')"
+			 (onChanged)="changeValue('docDepartmentCode', $event)"></text-box-mask>
 		</div>
 		<div class="col-sm-12 col-md-3">
-			<input-date-picker [dateControl]="form.get('docDepartmentCode')" (onChanged)="changeValue('docDepartmentCode', $event)"></input-date-picker>
+			<date-picker [dateControl]="form.get('docIssueDate')" (onChanged)="changeValue('docIssueDate', $event)"></date-picker>
 		</div>
 	</div>
 
@@ -34,7 +36,7 @@
 	<div class="form-group row">
 		<label class="col-sm-12 col-md-4" for="textControl">Ввести СМС код</label>
 		<div class="col-sm-12 col-md-6">
-			<input-text-box [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)"></input-text-box>
+			<text-box [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)"></text-box>
 		</div>
 	</div>
 
@@ -54,4 +56,5 @@
 	<div class="col-sm-12 offset-md-3 col-md-6 offset-md-3">
 		<input type="submit" class="btn btn-info" value="Войти" [disabled]="!form.valid" />
 	</div>
+	<pre>form.value: {{form.value | json}}</pre>
 </form>

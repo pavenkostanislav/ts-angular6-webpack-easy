@@ -2,7 +2,7 @@
 	<input-text  [textControl]="form.get('lastName')" 		(onChanged)="changeValue('lastName', $event)" 		[title]="'Фамилия'"></input-text>
 	<input-text  [textControl]="form.get('firstName')" 		(onChanged)="changeValue('firstName', $event)" 		[title]="'Имя'"></input-text>
 	<input-text  [textControl]="form.get('patronymic')" 	(onChanged)="changeValue('patronymic', $event)" 	[title]="'Отчество'"></input-text>
-	<date-picker  [dateControl]="form.get('birthday')" 		(onChanged)="changeValue('birthday', $event)"		[title]="'Дата рождения'"></date-picker>
+	<input-date-picker  [dateControl]="form.get('birthday')" 		(onChanged)="changeValue('birthday', $event)"		[title]="'Дата рождения'"></input-date-picker>
 	<input-phone [phoneControl]="form.get('phoneMobile')" 	(onChanged)="changeValue('phoneMobile', $event)"></input-phone>
 	<input-text  [textControl]="form.get('email')" 			(onChanged)="changeValue('email', $event)"			[title]="'Email'"></input-text>
 	<check-box 	 [checkbox]="form.get('conditionPassed')" 	(onChanged)="changeValue('conditionPassed', $event)">

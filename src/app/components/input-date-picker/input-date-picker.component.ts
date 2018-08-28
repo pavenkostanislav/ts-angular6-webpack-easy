@@ -10,6 +10,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: 'input-date-picker.component.html'
 })
 export class InputDatePickerComponent implements OnInit {
+  @Input() title = 'caption';
   focused: boolean = true;
   errorMessage: string;
   dateValue: NgbDateStruct;
