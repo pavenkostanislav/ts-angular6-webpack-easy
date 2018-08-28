@@ -1,11 +1,11 @@
 <ngb-tabset type="pills">
 	<ngb-tab title="Регистрация">
 		<ng-template ngbTabContent *ngIf="appSrv.pages.registration.show">
-			<hr style="background-color: red !important; height:1px;" />
+			<hr />
 			<registration-component></registration-component>
 		</ng-template>
 		<ng-template ngbTabContent *ngIf="appSrv.pages.passport.show">
-			<hr style="background-color: red !important; height:1px;" />
+			<hr />
 			<passport-component></passport-component>
 		</ng-template>
 	</ngb-tab>
