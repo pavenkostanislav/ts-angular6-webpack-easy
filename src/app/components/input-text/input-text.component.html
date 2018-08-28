@@ -6,8 +6,6 @@
     <input class="form-control" type="text" [placeholder]="placeholder" name="textControl" [(ngModel)]="textControl.value" (ngModelChange)="onNgModelChange($event)"
     (blur)="onBlur()" (focus)="onFocus()" />
   </div>
-<!--<input class="form-control" type="text" [placeholder]="placeholder" name="textControl" [(ngModel)]="textControl.value" (ngModelChange)="onNgModelChange($event)"
-    [textMask]="{mask: textMask, keepCharPositions: true}" (blur)="onBlur()" (focus)="onFocus()" />-->
   <div class="col-sm-12 offset-md-4 col-md-8" *ngIf="!textControl.valid && !focused">
     <hr />
     <small>{{errorMessage}}</small>

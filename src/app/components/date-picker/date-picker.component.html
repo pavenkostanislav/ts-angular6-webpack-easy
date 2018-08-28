@@ -1,16 +1,13 @@
 <div class="form-inline">
 	<div class="form-group">
 		<div class="input-group">
-
 			<input class="form-control" [placeholder]="placeholder"  type="text" name="dateControl" [(ngModel)]="dateControl.value" (ngModelChange)="onNgModelChange($event)"
 			[textMask]="{mask: getPhoneNumberMask, keepCharPositions: true}" (blur)="onBlur()" (focus)="onFocus()" />
-
 			<div class="input-group-append">
 				<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
 					#todo
 				</button>
 			</div>
-
 		</div>
 	</div>
 </div>

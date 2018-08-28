@@ -1,0 +1,13 @@
+﻿<form [formGroup]="form" (ngSubmit)="save()">
+
+	<input-phone [phoneControl]="form.get('phoneMobile')" (onChanged)="changeValue('phoneMobile', $event)"></input-phone>
+	<input-text [textControl]="form.get('password')" (onChanged)="changeValue('password', $event)" [title]="'Пароль'"></input-text>
+	
+	<div class="col-sm-12 offset-md-3 col-md-6 offset-md-3">
+		<input type="submit" class="btn btn-lg btn-info" value="Войти" [disabled]="!form.valid" />
+	</div>
+	<!--
+		<pre>form.value: {{form.value | json}}</pre>
+		<pre>form.valid: {{form.valid | json}}</pre>
+	-->
+</form>

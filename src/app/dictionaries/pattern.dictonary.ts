@@ -15,4 +15,5 @@ export const pattern: IMap<RegExp> = {
 	'user.consentUseSimpleSignatureSms': /([0-9]{4})/,
 	'user.consentBkiRequestB1': /^(true|1)$/,
 	'user.consentProcessPersDataB1': /^(true|1)$/,
+	'user.password': /^[А-яЁё_A-Za-z0-9-\+]$/,
 };
