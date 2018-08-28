@@ -1,39 +1,13 @@
-import { Component, EventEmitter, Input, Output, ViewEncapsulation } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
-import { AppService } from '../../views/app-component/app.service';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { TextBoxComponent } from '../text-box/text-box.component';
 @Component({
   moduleId: module.id,
   encapsulation: ViewEncapsulation.None,
   selector: 'text-box-mask',
   templateUrl: 'text-box-mask.component.html'
 })
-export class TextBoxMaskComponent {
+export class TextBoxMaskComponent extends TextBoxComponent {
   @Input() title = '';
   @Input() placeholder = '';
-  @Input() textControl: AbstractControl;
   @Input() textMaskName: string;
-
-
-  @Output() onChanged = new EventEmitter<AbstractControl>();
-
-  focused: boolean = true;
-  errorMessage: string;
-
-  constructor(private appSrv: AppService) {
-    this.errorMessage = appSrv.getMsgErrors('notValidValue');
-  }
-  
-  getMask = () => this.appSrv.getMasks(this.textMaskName);
-
-  onNgModelChange(value: string) {
-    this.onChanged.emit(this.textControl);
-  }
-
-  onFocus() {
-    this.focused = true;
-  }
-
-  onBlur() {
-    this.focused = false;
-  }
 }

@@ -9,6 +9,7 @@ import { AppService } from '../../app-component/app.service';
 })
 export class PassportComponent implements OnInit {
 	form: FormGroup;
+	isСonsentUseSimple = false;
 
 	constructor(public appSrv: AppService,
 		private _formBuilder: FormBuilder) { };
@@ -84,4 +85,8 @@ export class PassportComponent implements OnInit {
 	};
 
 	changeValue = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
+	changeСonsentUseSimpleSignature = (title: string, control: AbstractControl) => {
+		this.isСonsentUseSimple = true;
+		this.form.get(title).setValue(control.value);
+	};
 }

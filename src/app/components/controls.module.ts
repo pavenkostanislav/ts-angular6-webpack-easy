@@ -6,7 +6,6 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { CheckboxComponent } from './check-box/check-box.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { InputDatePickerComponent } from './input-date-picker/input-date-picker.component';
-import { InputDateComponent } from './input-date/input-date.component';
 import { InputPhoneComponent } from './input-phone/input-phone.component';
 import { InputTextComponent } from './input-text/input-text.component';
 import { TabComponent } from './tabs/tab/tab.component';
@@ -27,7 +26,6 @@ import { TextBoxComponent } from './text-box/text-box.component';
     InputPhoneComponent,
     InputTextComponent,
     CheckboxComponent,
-    InputDateComponent,
     DatePickerComponent,
     TextBoxComponent,
     TextBoxMaskComponent,
@@ -39,7 +37,6 @@ import { TextBoxComponent } from './text-box/text-box.component';
     InputPhoneComponent,
     InputTextComponent,
     CheckboxComponent,
-    InputDateComponent,
     DatePickerComponent,
     TextBoxComponent,
     TextBoxMaskComponent,

@@ -22,7 +22,7 @@
 			 (onChanged)="changeValue('docDepartmentCode', $event)"></text-box-mask>
 		</div>
 		<div class="col-sm-12 col-md-3">
-			<date-picker [dateControl]="form.get('docIssueDate')" (onChanged)="changeValue('docIssueDate', $event)"></date-picker>
+			<date-picker [placeholder]="'Когда выдан'" [dateControl]="form.get('docIssueDate')" (onChanged)="changeValue('docIssueDate', $event)"></date-picker>
 		</div>
 	</div>
 
@@ -32,30 +32,28 @@
 				электронной подписи)</a>
 		</check-box>
 	</div>
-	<div>
-		<div class="form-group row">
-			<label class="col-sm-12 col-md-4" for="textControl">Ввести СМС код</label>
-			<div class="col-sm-12 col-md-6">
-				<text-box [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)"></text-box>
-			</div>
+	<div class="form-group row">
+		<label class="col-sm-12 col-md-4" for="textControl">Ввести СМС код</label>
+		<div class="col-sm-12 col-md-6">
+			<text-box [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)"></text-box>
 		</div>
+	</div>
 
-		<div class="form-group row">
-			<check-box [checkbox]="form.get('consentBkiRequestB1')" (onChanged)="changeValue('consentBkiRequestB1', $event)">
-				<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на обработку персональных данных (расширенное согласие
-					по перечню данных и целях обработки)</a>
-			</check-box>
-		</div>
+	<div class="form-group row">
+		<check-box [checkbox]="form.get('consentBkiRequestB1')" (onChanged)="changeValue('consentBkiRequestB1', $event)">
+			<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на обработку персональных данных (расширенное согласие
+				по перечню данных и целях обработки)</a>
+		</check-box>
+	</div>
 
-		<div class="form-group row">
-			<check-box [checkbox]="form.get('consentProcessPersDataB1')" (onChanged)="changeValue('consentProcessPersDataB1', $event)">
-				<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на БКИ (целевое для конкретного банка)</a>
-			</check-box>
-		</div>
+	<div class="form-group row">
+		<check-box [checkbox]="form.get('consentProcessPersDataB1')" (onChanged)="changeValue('consentProcessPersDataB1', $event)">
+			<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на БКИ (целевое для конкретного банка)</a>
+		</check-box>
+	</div>
 
-		<div class="col-sm-12 offset-md-3 col-md-6 offset-md-3">
-			<input type="submit" class="btn btn-info" value="Войти" [disabled]="!form.valid" />
-		</div>
+	<div class="col-sm-12 offset-md-3 col-md-6 offset-md-3">
+		<input type="submit" class="btn btn-info" value="Войти" [disabled]="!form.valid" />
 	</div>
 	<!--
 		<pre>form.value: {{form.value | json}}</pre>
