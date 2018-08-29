@@ -1,7 +1,6 @@
-<div>
-  <input class="form-control" type="text"  [placeholder]="placeholder" name="textControl" [(ngModel)]="textControl.value" (ngModelChange)="onNgModelChange($event)"
-   (blur)="onBlur()" (focus)="onFocus()" />
-</div>
+<input class="form-control" type="text" [placeholder]="placeholder" name="textControl" [(ngModel)]="textControl.value" (ngModelChange)="onNgModelChange($event)"
+  (blur)="onBlur()" (focus)="onFocus()" />
+
 
 <div *ngIf="!textControl.valid && !focused">
   <hr />
