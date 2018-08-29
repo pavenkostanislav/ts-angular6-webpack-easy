@@ -62,6 +62,4 @@ export class PassportComponent implements OnInit {
 	};
 
 	changeValue = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
-
-	
 }
