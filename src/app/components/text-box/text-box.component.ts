@@ -8,8 +8,8 @@ import { AppService } from '../../views/app-component/app.service';
   templateUrl: 'text-box.component.html'
 })
 export class TextBoxComponent {
-  @Input() title = '';
-  @Input() placeholder = '';
+  @Input() title: string;
+  @Input() placeholder: string;
   @Input() textControl: AbstractControl;
 
 

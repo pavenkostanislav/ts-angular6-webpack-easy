@@ -5,8 +5,8 @@ import { TextBoxComponent } from '../text-box/text-box.component';
 @Component({
   moduleId: module.id,
   encapsulation: ViewEncapsulation.None,
-  selector: 'input-text',
-  templateUrl: 'input-text.component.html'
+  selector: 'input-text-link',
+  templateUrl: 'input-text-link.component.html'
 })
 export class InputTextComponent extends TextBoxComponent {
   constructor(appSrv: AppService) {
