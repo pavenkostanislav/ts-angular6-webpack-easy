@@ -53,6 +53,7 @@ export class AppService {
 		this.currentTabs = current;
 		
 		window.location.href = `${this.currentTabs}`;
+		//#todo
 		//const res = await this.router.navigateByUrl(`${this.currentTabs}`);
 		//if(!res) {
 		//	this.showError(res);
