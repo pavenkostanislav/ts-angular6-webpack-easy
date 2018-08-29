@@ -1,18 +1,18 @@
-﻿import { Injectable, OnInit } from '@angular/core';
-import { msgErrors, pattern } from '../../dictionaries';
+﻿import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { mask, msgErrors, pattern } from '../../dictionaries';
 import { IData, IMap, IPage } from '../../interfaces';
 import { ApiService } from '../../services/api.service';
 import { PageName } from '../../types';
-import { mask } from '../../dictionaries';
 
-export type TabName = 'signin' | 'registration';
+export type TabName = 'login/signin' | 'login/registration';
 
 @Injectable()
 export class AppService {
 	public data: IData;
 	public patterns: IMap<RegExp>;
 
-	constructor(public api: ApiService) {
+	constructor(public api: ApiService, private router: Router) {
 		this.patterns = pattern;
 	}
 
@@ -47,10 +47,16 @@ export class AppService {
 
 	// --- Tab ---
 
-	public currentTabs: TabName;
+	currentTabs: TabName;
 
-	setTabsShow(current: TabName): void {
+	async setCurrentTab(current: TabName): Promise<void> {
 		this.currentTabs = current;
+		
+		window.location.href = `${this.currentTabs}`;
+		//const res = await this.router.navigateByUrl(`${this.currentTabs}`);
+		//if(!res) {
+		//	this.showError(res);
+		//}
 	}
 
 	// --- Tab ---

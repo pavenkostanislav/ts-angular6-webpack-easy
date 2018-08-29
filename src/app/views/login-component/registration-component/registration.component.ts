@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { AppService } from '../../app-component/app.service';
 import { RegistrationService } from './registration.service';
 import { getRegistrationData } from '../../../../../spec/getRegistrationData.spec';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'registration-component',
@@ -14,10 +15,9 @@ export class RegistrationComponent implements OnInit {
 
 	constructor(public appSrv: AppService,
 		private regSrv: RegistrationService,
-		private _formBuilder: FormBuilder) { };
+		private _formBuilder: FormBuilder, private router: Router) { };
 
 	ngOnInit(): void {
-
 		const rezistrationTemplate = getRegistrationData();
 		this.form = this._formBuilder.group({
 			lastName: [rezistrationTemplate.lastName, [Validators.required, Validators.pattern(this.appSrv.patterns['user.lastName'])]],
@@ -50,5 +50,6 @@ export class RegistrationComponent implements OnInit {
 	};
 
 	changeValue = (title: string, control: AbstractControl) => this.form.get(title).setValue(control.value);
+
 }
 
