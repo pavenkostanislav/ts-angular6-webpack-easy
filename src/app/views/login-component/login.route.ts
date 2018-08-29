@@ -8,27 +8,15 @@ import { SignInComponent } from './signin-component/signin.component';
 export const loginRoute: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'login/registration',
     pathMatch: 'full'
   },
   {
     path: 'login',
     children: [
       {
-        path: '',
+        path: ':activeId',
         component: LoginComponent,
-      },
-      {
-        path: 'registration',
-        component: RegistrationComponent
-      },
-      //{
-      //  path: 'passport',
-      //  component: PassportComponent
-      //},
-      {
-        path: 'signin',
-        component: SignInComponent
       }
     ]
   }
