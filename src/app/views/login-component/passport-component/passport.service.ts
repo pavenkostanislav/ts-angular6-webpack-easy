@@ -12,7 +12,7 @@ export class PassportService {
 		}
 
 		const params = {
-			phoneMobile: this.appSrv.data.registration.account.phoneMobile,
+			phoneNumber: this.appSrv.data.registration.account.phoneMobile,
 			confirmTypeCode: 'PASSPORT'
 		};
 
