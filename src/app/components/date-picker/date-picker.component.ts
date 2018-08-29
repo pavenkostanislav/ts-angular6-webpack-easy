@@ -27,10 +27,22 @@ export class DatePickerComponent implements OnInit {
 
   @Input() dateControl: AbstractControl;
   @Output() onChanged = new EventEmitter<AbstractControl>();
+  onNgModelChange2(value: NgbDateStruct) {
+    this.dateControl.setValue(this.convertToString(value));
+    this.onChanged.emit(this.dateControl);
+  }
   onNgModelChange(value: NgbDateStruct) {
     this.dateControl.setValue(value);
     this.onChanged.emit(this.dateControl);
   }
+  convertToString(val: NgbDateStruct): string {
+    const day = (val.day.toString().length < 2) ? `0${val.day}` : val.day.toString();
+    const month = (val.month.toString().length < 2) ? `0${val.month}` : val.month.toString();
+
+    return `${day}.${month}.${val.year}`;
+  }
+
+
 
 
   convertToDatePickerFormat(val: string): NgbDateStruct {

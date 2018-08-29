@@ -1,5 +1,5 @@
-<ngb-tabset type="pills">
-	<ngb-tab title="Регистрация">
+<ngb-tabset type="nav nav-tabs customized-top-nav" [activeId]="'registration'">
+	<ngb-tab title="Регистрация" id="registration">
 		<ng-template ngbTabContent *ngIf="appSrv.pages.registration.show">
 			<hr />
 			<registration-component></registration-component>
@@ -9,7 +9,7 @@
 			<passport-component></passport-component>
 		</ng-template>
 	</ngb-tab>
-	<ngb-tab title="Вход в личный кабинет">
+	<ngb-tab title="Вход в личный кабинет" id="signin">
 		<ng-template ngbTabContent>
 			<hr />
 			<signin-component></signin-component>

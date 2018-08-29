@@ -1,69 +1,70 @@
-﻿<form [formGroup]="form" (ngSubmit)="save()">
-
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-4" for="textControl">Паспорт</label>
-		<div class="col-sm-12 col-md-3">
-			<text-box-mask [placeholder]="'Серия'" [textMaskName]="'user.docSerial'" [textControl]="form.get('docSerial')" (onChanged)="changeValue('docSerial', $event)"></text-box-mask>
-		</div>
-		<div class="col-sm-12 col-md-3">
-			<text-box-mask [placeholder]="'Номер'" [textMaskName]="'user.docNumber'" [textControl]="form.get('docNumber')" (onChanged)="changeValue('docNumber', $event)"></text-box-mask>
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<div class="col-sm-12 offset-md-4  col-md-6">
-			<text-box [placeholder]="'Кем выдан'" [textControl]="form.get('docDepartment')" (onChanged)="changeValue('docDepartment', $event)"></text-box>
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<div class="col-sm-12 offset-md-4  col-md-3">
-			<text-box-mask [placeholder]="'Код подразделения'" [textMaskName]="'user.docDepartmentCode'" [textControl]="form.get('docDepartmentCode')"
-			 (onChanged)="changeValue('docDepartmentCode', $event)"></text-box-mask>
-		</div>
-		<div class="col-sm-12 col-md-3">
-			<date-picker [placeholder]="'Когда выдан'" [dateControl]="form.get('docIssueDate')" (onChanged)="changeValue('docIssueDate', $event)"></date-picker>
-		</div>
-	</div>
-
-	<div class="form-group row">
-		<check-box [checkbox]="form.get('consentUseSimpleSignature')" (onChanged)="confirmTypeCode('consentUseSimpleSignature', $event)">
-			<a target="_blank" href="https://www.rusfinancebank.ru">Пользовательское соглашение (соглашение об использовании простой
-				электронной подписи)</a>
-		</check-box>
-	</div>
-
-	<div *ngIf="form.value.consentUseSimpleSignature" class="form-group row">
-		<label class="col-sm-12 col-md-4" for="textControl">Ввести СМС код</label>
-		<div class="col-sm-12 col-md-6">
-			<div class="input-group">
-				<text-box [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)"></text-box>
-				<span class="input-group-btn">
-					<a (click)="sentSmsCode()" class="btn btn-link" type="button">Выслать повторно</a>
-				</span>
+﻿<div class="col-sm-12 offset-md-1 col-md-10 offset-md-1">
+	<form [formGroup]="form" (ngSubmit)="save()">
+		<div class="form-group row">
+			<label class="col-sm-12 col-md-4" for="textControl">Паспорт</label>
+			<div class="col-sm-12 col-md-3">
+				<text-box-mask [placeholder]="'Серия'" [textMaskName]="'user.docSerial'" [textControl]="form.get('docSerial')" (onChanged)="changeValue('docSerial', $event)"></text-box-mask>
 			</div>
-			<hr />
+			<div class="col-sm-12 col-md-3">
+				<text-box-mask [placeholder]="'Номер'" [textMaskName]="'user.docNumber'" [textControl]="form.get('docNumber')" (onChanged)="changeValue('docNumber', $event)"></text-box-mask>
+			</div>
 		</div>
-	</div>
 
-	<div class="form-group row">
-		<check-box [checkbox]="form.get('consentBkiRequestB1')" (onChanged)="changeValue('consentBkiRequestB1', $event)">
-			<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на обработку персональных данных (расширенное согласие
-				по перечню данных и целях обработки)</a>
-		</check-box>
-	</div>
+		<div class="form-group row">
+			<div class="col-sm-12 offset-md-4  col-md-6">
+				<text-box [placeholder]="'Кем выдан'" [textControl]="form.get('docDepartment')" (onChanged)="changeValue('docDepartment', $event)"></text-box>
+			</div>
+		</div>
 
-	<div class="form-group row">
-		<check-box [checkbox]="form.get('consentProcessPersDataB1')" (onChanged)="changeValue('consentProcessPersDataB1', $event)">
-			<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на БКИ (целевое для конкретного банка)</a>
-		</check-box>
-	</div>
+		<div class="form-group row">
+			<div class="col-sm-12 offset-md-4  col-md-3">
+				<text-box-mask [placeholder]="'Код подразделения'" [textMaskName]="'user.docDepartmentCode'" [textControl]="form.get('docDepartmentCode')"
+				 (onChanged)="changeValue('docDepartmentCode', $event)"></text-box-mask>
+			</div>
+			<div class="col-sm-12 col-md-3">
+				<date-picker [placeholder]="'Когда выдан'" [dateControl]="form.get('docIssueDate')" (onChanged)="changeValue('docIssueDate', $event)"></date-picker>
+			</div>
+		</div>
 
-	<div class="col-sm-12 offset-md-3 col-md-6 offset-md-3">
-		<input type="submit" class="btn btn-lg btn-info" value="Войти" [disabled]="!form.valid" />
-	</div>
-	<!--
+		<div class="form-group row">
+			<check-box [checkbox]="form.get('consentUseSimpleSignature')" (onChanged)="confirmTypeCode('consentUseSimpleSignature', $event)">
+				<a target="_blank" href="https://www.rusfinancebank.ru">Пользовательское соглашение (соглашение об использовании простой
+					электронной подписи)</a>
+			</check-box>
+		</div>
+
+		<div *ngIf="form.value.consentUseSimpleSignature" class="form-group row">
+			<label class="col-sm-12 col-md-4" for="textControl">Ввести СМС код</label>
+			<div class="col-sm-12 col-md-6">
+				<div class="input-group">
+					<text-box [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)"></text-box>
+					<span class="input-group-btn">
+						<a (click)="sentSmsCode()" class="btn btn-link" type="button">Выслать повторно</a>
+					</span>
+				</div>
+				<hr />
+			</div>
+		</div>
+
+		<div class="form-group row">
+			<check-box [checkbox]="form.get('consentBkiRequestB1')" (onChanged)="changeValue('consentBkiRequestB1', $event)">
+				<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на обработку персональных данных (расширенное согласие
+					по перечню данных и целях обработки)</a>
+			</check-box>
+		</div>
+
+		<div class="form-group row">
+			<check-box [checkbox]="form.get('consentProcessPersDataB1')" (onChanged)="changeValue('consentProcessPersDataB1', $event)">
+				<a target="_blank" href="https://www.rusfinancebank.ru">Согласие на БКИ (целевое для конкретного банка)</a>
+			</check-box>
+		</div>
+
+		<div class="col-sm-12 offset-md-3 col-md-6 offset-md-3">
+			<input type="submit" class="btn btn-lg btn-info" value="Войти" [disabled]="!form.valid" />
+		</div>
+		<!--
 		<pre>form.value: {{form.value | json}}</pre>
 		<pre>form.valid: {{form.valid | json}}</pre>
 	-->
-</form>
+	</form>
+</div>

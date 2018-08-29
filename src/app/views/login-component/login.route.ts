@@ -22,14 +22,14 @@ export const loginRoute: Routes = [
         path: 'registration',
         component: RegistrationComponent
       },
+      //{
+      //  path: 'passport',
+      //  component: PassportComponent
+      //},
       {
-        path: 'passport',
-        component: PassportComponent
+        path: 'signin',
+        component: SignInComponent
       }
     ]
-  },
-  {
-    path: 'signin',
-    component: SignInComponent
   }
 ];

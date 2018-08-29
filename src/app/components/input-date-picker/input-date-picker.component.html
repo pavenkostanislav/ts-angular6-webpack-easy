@@ -8,7 +8,9 @@
 				<div class="input-group">
 					<input class="form-control" [placeholder]="placeholder"  type="text" name="dateControl" [(ngModel)]="dateControl.value" (ngModelChange)="onNgModelChange($event)"
 					 [textMask]="{mask: getPhoneNumberMask, keepCharPositions: true}" (blur)="onBlur()" (focus)="onFocus()" />
-					
+
+					 <input type="hidden" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="dateControl.value" (ngModelChange)="onNgModelChange2($event)" />
+
 					<div class="input-group-append">
 						<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
 							#todo

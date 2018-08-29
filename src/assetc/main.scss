@@ -1,2 +1,20 @@
 @import "_variables";
 @import "node_modules/bootstrap/scss/bootstrap.scss";
+
+.customized-container {
+    box-shadow: 3px 4px 54px rgba(0, 0, 0, 0.09);
+    opacity: 0.9;
+    margin-top: 3em;
+    padding-bottom: 10rem;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.customized-top-nav {
+    padding-top:  5.31em;
+}
+
+.nav-link.active {
+    border-style: none none solid;
+    border-bottom-width: 0.5em;
+}
