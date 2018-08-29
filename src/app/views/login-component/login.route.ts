@@ -1,23 +1,32 @@
 import { Routes } from '@angular/router';
-import { routes } from '../../dictionaries';
 import { LoginComponent } from './login.component';
+import { RegistrationComponent } from './registration-component/registration.component';
+import { PassportComponent } from './passport-component/passport.component';
+import { SignInComponent } from './signin-component/signin.component';
 
 
 export const loginRoute: Routes = [
   {
-    path: routes.login.url,
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'login',
     component: LoginComponent,
-    //children: [
-    //  {
-    //    path: routes.registration.url,
-    //    component: RegistrationComponent
-    //  },
-    //  {
-    //    path: routes.passport.url,
-    //    component: PassportComponent
-    //  }
-    //];
+    children: [
+      {
+        path: 'registration',
+        component: RegistrationComponent
+      }
+      // {
+        // path: 'passport',
+        // component: PassportComponent
+      // }
+    ]
+  },
+  {
+    path: 'signin',
+    component: SignInComponent
   }
-]
-
-
+];
