@@ -13,16 +13,19 @@ export const loginRoute: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent,
     children: [
+      {
+        path: '',
+        component: LoginComponent,
+      },
       {
         path: 'registration',
         component: RegistrationComponent
+      },
+      {
+        path: 'passport',
+        component: PassportComponent
       }
-      // {
-        // path: 'passport',
-        // component: PassportComponent
-      // }
     ]
   },
   {
