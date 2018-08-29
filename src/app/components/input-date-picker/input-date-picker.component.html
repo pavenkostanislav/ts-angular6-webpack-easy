@@ -1,8 +1,8 @@
 <div class="form-group row">
 
-	<label class="col-sm-12 col-md-4" for="dateControl">{{title}}</label>
+	<label class="col-sm-12 col-xl-4 col-lg-4" for="dateControl">{{title}}</label>
 
-	<div class="col-sm-12 col-md-6">
+	<div class="col-sm-12 col-xl-6 col-lg-6">
 		<div class="form-inline">
 			<div class="form-group">
 				<div class="input-group">
@@ -22,7 +22,7 @@
 		</div>
 	</div>
 
-	<div class="col-sm-12 offset-md-4 col-md-8" *ngIf="!dateControl.valid && !focused">
+	<div class="col-sm-12 offset-lg-4 col-lg-8 offset-xl-4 col-xl-8" *ngIf="!dateControl.valid && !focused">
 		<hr />
 		<small>{{errorMessage}}</small>
 	</div>
