@@ -16,22 +16,6 @@ export class PassportComponent implements OnInit {
 		private _formBuilder: FormBuilder) { };
 
 	ngOnInit(): void {
-		// const passportForm: IPassportForm = {
-		// 	passport: {
-		// 		docSerial: '',
-		// 		docNumber: '',
-		// 		docIssueDate: '',
-		// 		docDepartmentCode: '',
-		// 		docDepartment: '',
-		// 		consentUseSimpleSignature: true,
-		// 		consentUseSimpleSignatureSms: ''
-		// 	},
-		// 	condition: {
-		// 		consentBkiRequestB1: false,
-		// 		consentProcessPersDataB1: false
-		// 	},
-		// 	account_id: this.appSrv.data.registration.account.account_id
-		// }
 		this.form = this._formBuilder.group({
 			docSerial: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docSerial'])]],
 			docNumber: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.docNumber'])]],
@@ -52,7 +36,7 @@ export class PassportComponent implements OnInit {
 	};
 	sentSmsCode = async () => {
 		this.appSrv.api.log.debug('view', '1.4.2 (1)', 'Нажатие на ссылку «Выслать повторно»', this.form.value);
-		await this.pswSrv.sentSmsCode();
+		await this.pswSrv.userFactor();
 		this.appSrv.api.log.debug('view', '1.4.2 (1)', `valid: ${this.form.valid}`);
 	}
 	save = async () => {

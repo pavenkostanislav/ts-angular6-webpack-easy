@@ -5,7 +5,7 @@ import { IPassportForm } from '../../../interfaces';
 @Injectable()
 export class PassportService {
 	constructor(private appSrv: AppService) { }
-	async sentSmsCode(): Promise<void> {
+	async userFactor(): Promise<void> {
 		this.appSrv.api.log.debug('service', '1.4.2 (1)', 'Вызывается сервис /user/factor с параметром confirmTypeCode = “PASSPORT”');
 		if (!this.appSrv.data.registration.account) {
 			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));
