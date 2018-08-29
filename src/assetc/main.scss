@@ -1,6 +1,10 @@
 @import "_variables";
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 
+$custom-padding-rl: 5em;
+$custom-padding-top-pill: 3.31rem;
+$custom-padding-top-form: 5rem;
+
 .customized-container {
     box-shadow: 3px 4px 54px rgba(0, 0, 0, 0.09);
     opacity: 0.9;
@@ -10,11 +14,36 @@
     padding-left: 1rem;
 }
 
-.customized-top-nav {
-    padding-top:  5.31em;
+.nav-tabs {
+    padding-top:  $custom-padding-top-pill;
 }
 
 .nav-link.active {
     border-style: none none solid;
-    border-bottom-width: 0.5em;
+    border-bottom-width: 0.3em;
+    box-shadow:   -1px 17px 16px -10px rgba(235, 66, 92, 0.5);
+}
+
+.nav-link {
+    color: #d3d3d3;
+    font-size: 1.25em;
+    margin-right: $custom-padding-rl;
+    margin-left: $custom-padding-rl; 
+}
+
+.tab-content {
+    padding-top: $custom-padding-top-form;
+    color: #3e3e3e;
+    font-size: 1em;
+}
+.nav-link:hover {
+    color: #3e3e3e;
+}
+
+.form-control {
+    border-bottom-width: 0.1em;
+}
+
+.bnt {
+    font-size: 1.5em;
 }

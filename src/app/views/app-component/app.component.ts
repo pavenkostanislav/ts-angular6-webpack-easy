@@ -11,6 +11,6 @@ export class AppComponent implements OnInit {
 	constructor(public appSrv: AppService) { };
 
 	ngOnInit() {
-		this.appSrv.setTemplateShow('registration');
+		this.appSrv.setCurrentTemplate('registration');
 	}
 }

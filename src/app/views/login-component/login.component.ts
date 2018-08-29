@@ -7,11 +7,6 @@ import { AppService } from '../app-component/app.service';
 	styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-	registration: boolean;
-	passport: boolean;
-	constructor(public appSrv: AppService) {
-		this.passport = appSrv.getTemplateShow('passport');
-		this.registration = appSrv.getTemplateShow('registration');
-	}
+	constructor(public appSrv: AppService) {}
 }
 
