@@ -1,5 +1,5 @@
-import { IRegistrationForm, IRegistrationState, IData } from '../src/app/interfaces';
-export function generateTestAccount(): IRegistrationForm {
+import { IRegistrationForm } from '../src/app/interfaces';
+export const getRegistrationData = (): IRegistrationForm => {
 	let d = new Date();
 	let mm = d.getMonth().toString();
 	if (mm.length < 2)
