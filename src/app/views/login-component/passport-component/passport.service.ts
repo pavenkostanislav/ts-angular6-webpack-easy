@@ -20,18 +20,31 @@ export class PassportService {
 			'accept': 'application/json;charset=utf-8'
 		};
 		const res = await this.appSrv.api.post<any>('user/factor', null, params, headers);
-		if (res.status !== 200) {
-			this.appSrv.api.log.error('service', '1.4.2 (1)', 'Если статус ответа не 200, выводится ошибка');
-			this.appSrv.showError(res);
-			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));
-		}
 	};
 
 	async updateUser(account: IPassportForm): Promise<void> {
 		this.appSrv.api.log.debug('service', '1.4.2 (1-3)', 'Вызывается сервис изменения данных пользователя /user/user, метод PUT с передачей параметров passport.*, condition.* и account_id в теле запроса');
-		account.account_id = this.appSrv.data.registration.account.account_id;
+		if (!account) {
+			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));
+		}
 
-		await this.appSrv.api.put<void>('user/user', account);
+		const params = {
+			passport: {
+				docSerial: account.docSerial,
+				docNumber: account.docNumber,
+				docIssueDate: account.docIssueDate,
+				docDepartmentCode: account.docDepartmentCode,
+				docDepartment: account.docDepartment,
+				consentUseSimpleSignature: account.consentUseSimpleSignature,
+				consentUseSimpleSignatureSms: account.consentUseSimpleSignatureSms
+			},
+			condition: {
+				consentBkiRequestB1: account.consentBkiRequestB1,
+				consentProcessPersDataB1: account.consentProcessPersDataB1
+			},
+			account_id: this.appSrv.data.registration.account.account_id
+		}
+		await this.appSrv.api.put<void>('user/user', params);
 
 		this.appSrv.api.log.debug('service', '1.4.2 (1-3)', 'Вызывается сервис проверки возможности создания анкеты для клиента /user/checkApplication');
 		await this.checkApplication();
@@ -47,6 +60,6 @@ export class PassportService {
 			this.appSrv.showError(res['can_create_application_message']);
 			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));
 		}
-		this.appSrv.nextPage('passport');
+		this.appSrv.nextPage('signin');
 	};
 }

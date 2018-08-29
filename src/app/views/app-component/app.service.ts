@@ -14,6 +14,7 @@ export class AppService {
 		return { show };
 	}
 	public pages: IMap<IPage> = {
+		'signin': this.defaultPage(),
 		'login': this.defaultPage(),
 		'passport': this.defaultPage(),
 		'registration': this.defaultPage()
