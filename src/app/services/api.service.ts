@@ -23,26 +23,26 @@ export class ApiService {
     this.log = getBunyan(this.config);
   }
 
-  public get<T>(url: string, params?: IMap<any>): Promise<T> {
-    return this.getRequest<T>(this.http.get(this.getApiUrl(url), this.getRequestOptions(params)));
+  public get<T>(url: string, params?: IMap<any>, headers?: IMap<any>): Promise<T> {
+    return this.getRequest<T>(this.http.get(this.getApiUrl(url), this.getRequestOptions(params, headers)));
   }
 
-  public delete<T>(url: string, params?: IMap<any>): Promise<T> {
-    return this.getRequest<T>(this.http.delete(this.getApiUrl(url), this.getRequestOptions(params)));
+  public delete<T>(url: string, params?: IMap<any>, headers?: IMap<any>): Promise<T> {
+    return this.getRequest<T>(this.http.delete(this.getApiUrl(url), this.getRequestOptions(params, headers)));
   }
 
-  public post<T>(url: string, data?: any, params?: IMap<any>): Promise<T> {
-    return this.getRequest<T>(this.http.post(this.getApiUrl(url), data, this.getRequestOptions(params)));
+  public post<T>(url: string, data?: any, params?: IMap<any>, headers?: IMap<any>): Promise<T> {
+    return this.getRequest<T>(this.http.post(this.getApiUrl(url), data, this.getRequestOptions(params, headers)));
   }
 
-  public postBlob<T>(url: string, data?: any, params?: IMap<any>): Promise<T> {
-    const options = this.getRequestOptions(params);
+  public postBlob<T>(url: string, data?: any, params?: IMap<any>, headers?: IMap<any>): Promise<T> {
+    const options = this.getRequestOptions(params, headers);
     options.responseType = ResponseContentType.Blob;
     return this.http.post(this.getApiUrl(url), data, options).map((res: any) => res._body).toPromise();
   }
 
-  public put<T>(url: string, data?: any, params?: IMap<any>): Promise<T> {
-    return this.getRequest<T>(this.http.put(this.getApiUrl(url), data, this.getRequestOptions(params)));
+  public put<T>(url: string, data?: any, params?: IMap<any>, headers?: IMap<any>): Promise<T> {
+    return this.getRequest<T>(this.http.put(this.getApiUrl(url), data, this.getRequestOptions(params, headers)));
   }
 
   private getApiUrl(url: string): string {
@@ -51,14 +51,15 @@ export class ApiService {
     return _url;
   }
 
-  private getRequestOptions(params: IMap<any>): RequestOptions {
-    let headers: Headers = new Headers();
-        headers.append('Content-Type', 'application/json; charset=utf-8');
-
+  private getRequestOptions(params: IMap<any>, headers: IMap<any>): RequestOptions {
     const result = new RequestOptions({
-      headers,
       withCredentials: true
     });
+    if (headers) {
+      const searchHeaders = new Headers();
+      forIn(headers, (value: any, field: any) => searchHeaders.set(field, value.toString()));
+      result.headers = searchHeaders;
+    }
     if (params) {
       const searchParams = new URLSearchParams();
       forIn(params, (value: any, field: any) => searchParams.set(field, value.toString()));

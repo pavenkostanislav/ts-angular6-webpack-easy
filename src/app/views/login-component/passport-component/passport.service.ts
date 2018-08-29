@@ -11,11 +11,15 @@ export class PassportService {
 			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));
 		}
 
-		const requestPost = {
+		const params = {
 			phoneMobile: this.appSrv.data.registration.account.phoneMobile,
 			confirmTypeCode: 'PASSPORT'
 		};
-		const res = await this.appSrv.api.get<any>('user/factor', requestPost);
+
+		const headers = {
+			'accept': 'application/json;charset=utf-8'
+		};
+		const res = await this.appSrv.api.post<any>('user/factor', null, params, headers);
 		if (res.status !== 200) {
 			this.appSrv.api.log.error('service', '1.4.2 (1)', 'Если статус ответа не 200, выводится ошибка');
 			this.appSrv.showError(res);
