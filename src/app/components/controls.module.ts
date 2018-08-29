@@ -8,8 +8,6 @@ import { DatePickerComponent } from './date-picker/date-picker.component';
 import { InputDatePickerComponent } from './input-date-picker/input-date-picker.component';
 import { InputPhoneComponent } from './input-phone/input-phone.component';
 import { InputTextComponent } from './input-text/input-text.component';
-import { TabComponent } from './tabs/tab/tab.component';
-import { TabsComponent } from './tabs/tabs.component';
 import { TextBoxMaskComponent } from './text-box-mask/text-box-mask.component';
 import { TextBoxComponent } from './text-box/text-box.component';
 import { InputTextLinkComponent } from './input-text-link/input-text-link.component';
@@ -22,8 +20,6 @@ import { InputTextLinkComponent } from './input-text-link/input-text-link.compon
     NgbModule.forRoot()
   ],
   declarations: [
-    TabComponent,
-    TabsComponent,
     InputPhoneComponent,
     InputTextComponent,
     CheckboxComponent,
@@ -34,8 +30,6 @@ import { InputTextLinkComponent } from './input-text-link/input-text-link.compon
     InputTextLinkComponent
   ],
   exports: [
-    TabComponent,
-    TabsComponent,
     InputPhoneComponent,
     InputTextComponent,
     CheckboxComponent,
