@@ -63,6 +63,6 @@ export class RegistrationService {
 			this.appSrv.showError(res['can_create_application_message']);
 			return Promise.reject(this.appSrv.getMsgErrors('noMessage'));
 		}
-		this.appSrv.nextPage('passport');
+		this.appSrv.setTemplateShow('passport');
 	};
 }

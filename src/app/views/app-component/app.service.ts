@@ -10,17 +10,44 @@ export class AppService {
 	public data: IData;
 	public patterns: IMap<RegExp>;
 
-	defaultPage(show = false): IPage {
+	setShow(show = false): IPage {
 		return { show };
 	}
-	public pages: IMap<IPage> = {
-		'signin': this.defaultPage(),
-		'login': this.defaultPage(),
-		'passport': this.defaultPage(),
-		'registration': this.defaultPage()
+	
+	// --- Template ---
+
+	public templats: IMap<IPage> = {
+		'passport': this.setShow(),
+		'registration': this.setShow()
 	};
 
-	private lastPage: Page = null;
+	private currentTemplate: Page;
+
+	getTemplateShow(name: string): boolean {
+		return this.templats[name].show;
+	}
+
+	setTemplateShow(next: Page): void {
+		if (this.currentTemplate) { this.templats[this.currentTemplate].show = false; }
+		this.templats[next].show = true;
+		this.currentTemplate = next;
+	}
+
+	// --- Template ---
+	
+	// --- Tab ---
+
+	public tabs: IMap<IPage> = {
+		'signin': this.setShow(),
+		'login': this.setShow()
+	};
+
+	getTabsShow(name: string): boolean {
+		return this.tabs[name].show;
+	}
+
+	// --- Tab ---
+
 	constructor(public api: ApiService) { 
 		this.patterns = pattern;
 	}
@@ -30,17 +57,7 @@ export class AppService {
 	}
 
 	getMasks(name: string): any[] {
-		return mask[name];
-	}
-
-	getPagesInfo(name: string): boolean {
-		return this.pages[name].show;
-	}
-
-	nextPage(next: Page): void {
-		if (this.lastPage) { this.pages[this.lastPage].show = false; }
-		this.pages[next].show = true;
-		this.lastPage = next;
+		return mask[name] ? mask[name] : [];
 	}
 
 	public showError = (arg: any) => {

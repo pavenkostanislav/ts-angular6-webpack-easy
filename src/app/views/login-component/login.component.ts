@@ -10,8 +10,8 @@ export class LoginComponent {
 	registration: boolean;
 	passport: boolean;
 	constructor(public appSrv: AppService) {
-		this.passport = appSrv.getPagesInfo('passport');
-		this.registration = appSrv.getPagesInfo('registration');
+		this.passport = appSrv.getTemplateShow('passport');
+		this.registration = appSrv.getTemplateShow('registration');
 	}
 }
 

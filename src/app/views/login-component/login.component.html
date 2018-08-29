@@ -1,10 +1,10 @@
 <ngb-tabset type="nav nav-tabs customized-top-nav" [activeId]="'registration'">
 	<ngb-tab title="Регистрация" id="registration">
-		<ng-template ngbTabContent *ngIf="appSrv.pages.registration.show">
+		<ng-template ngbTabContent *ngIf="appSrv.templats.registration.show">
 			<hr />
 			<registration-component></registration-component>
 		</ng-template>
-		<ng-template ngbTabContent *ngIf="appSrv.pages.passport.show">
+		<ng-template ngbTabContent *ngIf="appSrv.templats.passport.show">
 			<hr />
 			<passport-component></passport-component>
 		</ng-template>

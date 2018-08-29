@@ -11,10 +11,23 @@ export class TextBoxMaskComponent extends TextBoxComponent {
   @Input() title = '';
   @Input() placeholder = '';
   @Input() textMaskName: string;
+  @Input() unMackRegExp: RegExp;
 
   constructor(private appSrv: AppService) {
     super(appSrv);
   }
 
-  getMask = () => this.appSrv.getMasks(this.textMaskName);
+  getMask = (): any[] => this.appSrv.getMasks(this.textMaskName);
+
+  unMask = (val: string): string => {
+    return val.replace(this.unMackRegExp, '');
+  }
+
+  onNgModelChange(value: string) {
+    if (this.unMackRegExp) {
+      this.textControl.setValue(this.unMask(value));
+    }
+    this.onChanged.emit(this.textControl);
+  }
+
 }

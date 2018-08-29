@@ -1,5 +1,6 @@
 import { IMap } from '../interfaces';
-export const mask: IMap<any[]> = {
+type Mask = RegExp | string;
+export const mask: IMap<Mask[]> = {
 	'user.phone': ['+', '7', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
 	'user.docSerial': [/\d/, /\d/, ' ', /\d/, /\d/],
 	'user.docNumber': [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/],
