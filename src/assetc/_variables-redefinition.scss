@@ -5,13 +5,16 @@ $boostrap-padding-rl: 115px;
 .container {
     box-shadow: 3px 4px 54px rgba(0, 0, 0, 0.09);
     opacity: 0.9;
-    margin-top: 3em;
+    margin-top: 2em;
 }
 
 .container-fluid {
     box-shadow: 3px 4px 54px rgba(0, 0, 0, 0.09);
     opacity: 0.9;
-    margin: 3em;
+    padding-left: auto;
+    padding-right: auto;
+    padding-top: 0.64em;
+    padding-bottom: 0.64em;
 }
 
 .nav-tabs {

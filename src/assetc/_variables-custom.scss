@@ -13,10 +13,18 @@ $custom-container-sm-padding-bottom: 23px;
 }
 
 .custom-vertical {
-    color: #d3d3d3;
+    background-color: #d3d3d3;
     height: 38px;
     width: 1px;
-}
+    margin-left: 25px;
+    margin-right: 15px;
+    position: absolute;
+ }
+ 
+ .border-between > [class*='col-']:first-child:before {
+    display: none;
+ }
+
 .custom-btn-calendar {
     display: $custom-btn-calendar-display;
     background: $custom-btn-calendar-background;
