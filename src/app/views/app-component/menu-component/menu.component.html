@@ -1,6 +1,6 @@
   <!--sm. This is text hidden on a MEDIUM screen and larger.  -->
-<div class="custom-container-sm">
-  <div class="d-lg-none d-xl-none row"> 
+<div *ngIf="appSrv.grid.sm" class="custom-container-sm">
+  <div class="row"> 
     <div class="col-sm-5">
       <a href="#"><img src="../../../../assetc/img/logo-bank.png" /></a>
     </div>
@@ -17,7 +17,7 @@
 </div>
 
   <!--lg, xl. This is text hidden on small only.-->
-<div class="container-fluid d-block d-sm-none">
+<div *ngIf="appSrv.grid.lg || appSrv.grid.xl" class="container-fluid">
 
     <div class="offset-lg-2 col-lg-2 offset-xl-2 col-xl-2">
       <a class="d-inline" href="#"><img src="../../../../assetc/img/logo-bank.png" /></a>

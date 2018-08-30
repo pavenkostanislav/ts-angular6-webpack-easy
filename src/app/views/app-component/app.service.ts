@@ -9,6 +9,12 @@ import * as ng from '@angular/core';
 
 export type TabName = 'login/signin' | 'login/registration';
 export type GridSize = 'sm' | 'lg' | 'xl';
+interface IGrid {	
+	sm: boolean;	
+	xl: boolean;
+	lg: boolean;
+	size: GridSize;
+}
 
 @Injectable()
 export class AppService {
@@ -92,9 +98,14 @@ export class AppService {
 		}
 	}
 
-	// --- Grid ---	
-
-	GridSize: GridSize;
+	// --- Grid ---		
+	
+	grid: IGrid = {
+		sm: false,
+		xl: false,
+		lg: false,
+		size: 'xl'
+	}
 
 	// --- Grid ---
 

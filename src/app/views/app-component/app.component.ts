@@ -18,7 +18,27 @@ export class AppComponent implements OnInit {
 		this.appSrv.setCurrentTemplate('registration');
 
 		this._gridSize.asObservable().subscribe(
-			(gridSize: GridSize) => { this.appSrv.GridSize = gridSize; }
+			(gridSize: GridSize) => {
+				this.appSrv.grid.size = gridSize;
+				if (this.appSrv.grid.size === 'sm') {
+					this.appSrv.grid.sm = true;
+					this.appSrv.grid.lg = false;
+					this.appSrv.grid.xl = false;
+					return;
+				}
+				if (this.appSrv.grid.size === 'lg') {
+					this.appSrv.grid.sm = false;
+					this.appSrv.grid.lg = true;
+					this.appSrv.grid.xl = false;
+					return;
+				}
+				if (this.appSrv.grid.size === 'xl') {
+					this.appSrv.grid.sm = false;
+					this.appSrv.grid.lg = false;
+					this.appSrv.grid.xl = true;
+					return;
+				}
+			}
 		);
 	}
 
