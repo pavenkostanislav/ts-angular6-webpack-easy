@@ -5,8 +5,8 @@
 		<input-phone [phoneControl]="form.get('phoneMobile')" (onChanged)="changeValue('phoneMobile', $event)"></input-phone>
 		<input-text-link [title]="'Пароль'" [textControl]="form.get('password')" (onChanged)="changeValue('password', $event)" (onClick)="forgotPassword()" [linkName]="'Забыли?'"></input-text-link>
 				
-		<div class="col-sm-12 offset-lg-3 col-lg-6 offset-lg-3 offset-xl-3 col-xl-6 offset-xl-3">
-			<input type="submit" class="btn btn-lg btn-info" value="Войти" [disabled]="!form.valid" />
+		<div class="col-sm-12 offset-lg-4 col-lg-4 offset-lg-4 offset-xl-4 col-xl-4 offset-xl-4">
+			<input type="submit" class="btn btn-lg btn-info offset-lg-4 col-lg-4 offset-lg-4 offset-xl-4 col-xl-4 offset-xl-4" value="Войти" [disabled]="!form.valid" />
 		</div>
 		<!--
 			<pre>form.value: {{form.value | json}}</pre>

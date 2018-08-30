@@ -1,9 +1,9 @@
 <div class="form-group row" (mouseenter)="mouseEnter()" (mouseleave)="mouseLeave()">
 
-  <input class="col-sm-12 offset-xl-4 col-xl-1 offset-lg-4 col-lg-1 form-control" type="checkbox" name="checkbox" [(ngModel)]="checkbox.value" (ngModelChange)="onNgModelChange($event)"
+  <div class="col-sm-12  offset-lg-4 col-lg-8 offset-xl-4 col-xl-8 ">
+  <input class="form-check-inline col-sm-1 col-lg-2 col-xl-2" type="checkbox" name="checkbox" [(ngModel)]="checkbox.value" (ngModelChange)="onNgModelChange($event)"
   />
-  <div class="col-sm-12 col-lg-6 col-xl-6">
-    <label class="col-sm-12 col-lg-5 col-xl-5" for="checkbox">
+    <label class="form-check-label col-sm-10 col-lg-10 col-xl-10" for="checkbox">
       <ng-content></ng-content>
     </label>
   </div>

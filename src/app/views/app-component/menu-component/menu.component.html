@@ -1,34 +1,47 @@
-<nav class="navbar navbar-default navbar-expand-lg navbar-expand-xl" data-offset-left="90">
-  <div class="container-fluid" *ngIf="gridSize === 'lg'">
-    <a class="navbar-brand" href="#">
-      <img src="/src/assetc/img/logo-bank.png" width="188" height="54" />
-    </a>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <!--left-->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <div class="nav-link">Заявка на автокредит</div>
-        </li>
-      </ul>
-      <!--right this-->
+  <!--sm. This is text hidden on a MEDIUM screen and larger.  -->
+<div class="custom-container-sm">
+  <div class="d-lg-none d-xl-none row"> 
+    <div class="col-sm-5">
+      <a href="#"><img src="../../../../assetc/img/logo-bank.png" /></a>
     </div>
-
-    <div class="navbar-brand">
-      <img src="/src/assetc/img/phone-call.png" width="32" height="32" />
-      <span> Заказать обратный звонок</span>
+    <div class="col-sm-2 text-center">
+        <hr class="custom-vertical">
     </div>
-
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <div class="nav-link">8-800-000-00-00</div>
-        </li>
-      </ul>
+    <div class="col-sm-4 text-left">
+      <span class="small">Обратный&nbsp;звонок&nbsp;</span>
     </div>
-    <div class="navbar-brand">
-        <img src="/src/assetc/img/sing-in.png" width="32" height="32" />
-        <span> Заказать обратный звонок</span>
-      </div>
+    <div class="col-sm-1">
+      <a href="#"><img class="img-fluid rounded-circle" src="../../../../assetc/img/phone-call.png" /></a>
+    </div>
   </div>
-</nav>
+</div>
+
+  <!--lg, xl. This is text hidden on small only.-->
+<div class="container-fluid d-block d-sm-none">
+
+    <div class="offset-lg-2 col-lg-2 offset-xl-2 col-xl-2">
+      <a class="d-inline" href="#"><img src="../../../../assetc/img/logo-bank.png" /></a>
+    </div>
+   
+    <div class="col-lg-1 col-xl-1 text-center">
+      <hr class="custom-vertical">
+    </div>
+    
+    <div class="col-lg-2 col-xl-2 text-center">
+      <span class="col-2 d-inline">Заявка на автокредит</span>
+    </div>
+
+    <div class="offset-lg-2 col-lg-2 offset-xl-2 col-xl-2">
+      <a class="d-inline" href="# "><img class="img-fluid rounded-circle " src="../../../../assetc/img/phone-call.png" /></a>
+    </div>
+    
+    <div class="offset-lg-2 col-lg-2 offset-xl-2 col-xl-2 text-center">
+      <span class="small text-left ">Заказать&nbsp;обратный&nbsp;звонок</span>
+      <span class="small text-left ">8(495)926-70-07</span>
+    </div>
+
+    <div class="offset-lg-2 col-lg-2 offset-xl-2 col-xl-2">
+      <a class="col-2 d-inline" href="# "><img class="img-fluid rounded-circle " src="../../../../assetc/img/sing-in.png" /></a>
+    </div>
+
+</div>

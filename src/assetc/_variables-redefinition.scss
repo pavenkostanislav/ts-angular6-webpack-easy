@@ -8,6 +8,12 @@ $boostrap-padding-rl: 115px;
     margin-top: 3em;
 }
 
+.container-fluid {
+    box-shadow: 3px 4px 54px rgba(0, 0, 0, 0.09);
+    opacity: 0.9;
+    margin: 3em;
+}
+
 .nav-tabs {
     padding-top:  80px;
 }

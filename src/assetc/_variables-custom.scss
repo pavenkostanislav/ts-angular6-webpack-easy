@@ -1,7 +1,22 @@
 
 $custom-btn-calendar-background: white;
 $custom-btn-calendar-display: inline;
+$custom-container-sm-margin: $grid-gutter-width;
+$custom-container-sm-padding-top: 23px;
+$custom-container-sm-padding-bottom: 23px;
 
+.custom-container-sm {
+    padding-top: $custom-container-sm-padding-top;
+    padding-bottom: $custom-container-sm-padding-bottom;
+    padding-left: $custom-container-sm-margin;  
+    padding-right: $custom-container-sm-margin; 
+}
+
+.custom-vertical {
+    color: #d3d3d3;
+    height: 38px;
+    width: 1px;
+}
 .custom-btn-calendar {
     display: $custom-btn-calendar-display;
     background: $custom-btn-calendar-background;
@@ -10,5 +25,3 @@ $custom-btn-calendar-display: inline;
         background: $custom-btn-calendar-background;
     }
 }
-
-

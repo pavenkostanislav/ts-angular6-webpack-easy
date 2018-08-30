@@ -8,11 +8,5 @@ import { AppService, GridSize } from '../app.service';
   templateUrl: 'menu.component.html'
 })
 export class MenuComponent {
-
-  gridSize: GridSize;
-
-  constructor(private appSrv: AppService) { 
-    this.gridSize = appSrv.GridSize;
-  }
-
+  constructor(public appSrv: AppService) { }
 }
