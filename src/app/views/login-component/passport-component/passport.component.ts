@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators, ValidationErrors } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { getPassportData } from '../../../../../spec/getPassportData.spec';
+import { IPassportForm } from '../../../interfaces';
 import { AppService } from '../../app-component/app.service';
 import { PassportService } from './passport.service';
-import { getPassportData } from '../../../../../spec/getPassportData.spec';
 
 @Component({
 	selector: 'passport-component',
@@ -18,7 +19,7 @@ export class PassportComponent implements OnInit {
 
 	ngOnInit(): void {
 		const passportTemplate = getPassportData();
-		
+
 		this.form = this._formBuilder.group({
 			docSerial: [passportTemplate.docSerial, [Validators.required, Validators.pattern(this.appSrv.patterns['user.docSerial'])]],
 			docNumber: [passportTemplate.docNumber, [Validators.required, Validators.pattern(this.appSrv.patterns['user.docNumber'])]],
@@ -46,7 +47,10 @@ export class PassportComponent implements OnInit {
 	confirmTypeCode = async (title: string, control: AbstractControl) => {
 		this.appSrv.api.log.debug('view', '1.4.2 (1)', 'Отметка поля «Соглашение об использовании простой электронной подписи»', this.form.value);
 		this.form.get(title).setValue(control.value);
-		await this.sentSmsCode();
+		const passportForm: IPassportForm = this.form.value;
+		if (passportForm.consentUseSimpleSignature) {
+			await this.sentSmsCode();
+		}
 	};
 	sentSmsCode = async () => {
 		this.appSrv.api.log.debug('view', '1.4.2 (1)', 'Нажатие на ссылку «Выслать повторно»', this.form.value);

@@ -11,10 +11,7 @@ export type TabName = 'login/signin' | 'login/registration';
 export type GridSize = 'sm' | 'lg' | 'xl';
 
 @Injectable()
-export class AppService implements OnInit {
-	ngOnInit(): void {
-        this.initGridSize(window.innerWidth);
-	}
+export class AppService {
 
 	public data: IData;
 	public patterns: IMap<RegExp>;
@@ -97,26 +94,7 @@ export class AppService implements OnInit {
 
 	// --- Grid ---	
 
-	private _gridSize = new BehaviorSubject<GridSize>('lg');
-
-	GridSize = this._gridSize.asObservable();
-
-	initGridSize(width: number): void {
-        if (width < 320) {
-            this._gridSize.next('sm');
-		}
-		if (width < 1200) {
-            this._gridSize.next('lg');
-		}
-		if (width >= 1600) {
-			this._gridSize.next('xl');
-		}
-    }
-	
-	@ng.HostListener('window:resize', ['$event'])	
-    onResize(event: any) {
-        this.initGridSize(event.target.innerWidth);
-	}
+	GridSize: GridSize;
 
 	// --- Grid ---
 

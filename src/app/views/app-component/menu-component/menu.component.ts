@@ -9,13 +9,10 @@ import { AppService, GridSize } from '../app.service';
 })
 export class MenuComponent {
 
-  gridSize: GridSize = 'lg';
+  gridSize: GridSize;
 
-  constructor(private appSrv: AppService) { }
-
-  ngOnInit() {
-    this.appSrv.GridSize.subscribe(
-      (res: any) => { this.gridSize = res; }
-    );
+  constructor(private appSrv: AppService) { 
+    this.gridSize = appSrv.GridSize;
   }
+
 }
