@@ -6,14 +6,15 @@
 		<div class="form-inline">
 			<div class="form-group">
 				<div class="input-group">
-					<input class="form-control" [placeholder]="placeholder"  type="text" name="dateControl" [(ngModel)]="dateControl.value" (ngModelChange)="onNgModelChange($event)"
+					<input class="form-control" [placeholder]="placeholder" type="text" name="dateControl" [(ngModel)]="dateControl.value" (ngModelChange)="onNgModelChange($event)"
 					 [textMask]="{mask: getPhoneNumberMask, keepCharPositions: true}" (blur)="onBlur()" (focus)="onFocus()" />
 
-					 <input type="hidden" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="dateControl.value" (ngModelChange)="onNgModelChange2($event)" />
+					<input type="hidden" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="dateControl.value" (ngModelChange)="onNgModelChange2($event)"
+					/>
 
 					<div class="input-group-append">
 						<button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-							#todo
+							<img src="/src/assetc/img/calendar.png" alt="Календарь" />
 						</button>
 					</div>
 
@@ -24,7 +25,7 @@
 
 	<div class="col-sm-12 offset-lg-4 col-lg-8 offset-xl-4 col-xl-8" *ngIf="!dateControl.valid && !focused">
 		<hr />
-		<small  [innerHTML]="errorMessage"></small>
+		<small [innerHTML]="errorMessage"></small>
 	</div>
 
 </div>

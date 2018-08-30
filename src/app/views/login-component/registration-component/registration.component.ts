@@ -20,11 +20,11 @@ export class RegistrationComponent implements OnInit {
 	ngOnInit(): void {
 		const rezistrationTemplate = getRegistrationData();
 		this.form = this._formBuilder.group({
-			lastName: [rezistrationTemplate.lastName, [Validators.required, Validators.pattern(this.appSrv.patterns['user.lastName'])]],
-			firstName: [rezistrationTemplate.firstName, [Validators.required, Validators.pattern(this.appSrv.patterns['user.firstName'])]],
-			patronymic: [rezistrationTemplate.patronymic, [Validators.required, Validators.pattern(this.appSrv.patterns['user.patronymic'])]],
+			lastName: [rezistrationTemplate.lastName, [Validators.required, Validators.maxLength(50), Validators.pattern(this.appSrv.patterns['user.lastName'])]],
+			firstName: [rezistrationTemplate.firstName, [Validators.required, Validators.maxLength(31), Validators.pattern(this.appSrv.patterns['user.firstName'])]],
+			patronymic: [rezistrationTemplate.patronymic, Validators.maxLength(31), [Validators.required, Validators.pattern(this.appSrv.patterns['user.patronymic'])]],
 			phoneMobile: [rezistrationTemplate.phoneMobile, [Validators.required, Validators.pattern(this.appSrv.patterns['user.phoneMobile'])]],
-			email: [rezistrationTemplate.email, [Validators.required, Validators.pattern(this.appSrv.patterns['user.email'])]],
+			email: [rezistrationTemplate.email, [Validators.required, Validators.maxLength(255), Validators.pattern(this.appSrv.patterns['user.email'])]],
 			birthday: [rezistrationTemplate.birthday, [Validators.required, Validators.pattern(this.appSrv.patterns['user.birthday'])]],
 			conditionPassed: [rezistrationTemplate.conditionPassed, [Validators.required, Validators.pattern(this.appSrv.patterns['user.conditionPassed'])]]
 		});

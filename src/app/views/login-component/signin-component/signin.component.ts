@@ -18,7 +18,7 @@ export class SignInComponent implements OnInit {
 	ngOnInit(): void {
 		this.form = this._formBuilder.group({
 			phoneMobile: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.phoneMobile'])]],
-			password: ['', [Validators.required, Validators.pattern(this.appSrv.patterns['user.password'])]]
+			password: ['', [Validators.required, Validators.maxLength(100), Validators.pattern(this.appSrv.patterns['user.password'])]]
 		});
 	}
 
