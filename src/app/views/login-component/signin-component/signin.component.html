@@ -1,10 +1,10 @@
 ﻿
 <div class="col-sm-12  offset-lg-1 col-lg-10 offset-lg-1 offset-xl-1 col-xl-10 offset-xl-1">
-	<form [formGroup]="form" (ngSubmit)="save()">
+	<form [formGroup]="form" (ngSubmit)="submit()">
 
 		<input-phone [phoneControl]="form.get('phoneMobile')" (onChanged)="changeValue('phoneMobile', $event)"></input-phone>
-		<input-text [textControl]="form.get('password')" (onChanged)="changeValue('password', $event)" [title]="'Пароль'"></input-text>
-		
+		<input-text-link [textControl]="form.get('password')" (onChanged)="changeValue('password', $event)" (onClick)="forgotPassword()" [linkName]="'Забыли?'"></input-text-link>
+				
 		<div class="col-sm-12 offset-lg-3 col-lg-6 offset-lg-3 offset-xl-3 col-xl-6 offset-xl-3">
 			<input type="submit" class="btn btn-lg btn-info" value="Войти" [disabled]="!form.valid" />
 		</div>
