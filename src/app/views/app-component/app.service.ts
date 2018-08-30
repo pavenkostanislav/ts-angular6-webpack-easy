@@ -18,13 +18,13 @@ export class AppService {
 
 	// --- Template ---
 
-	setShow(show = false): IPage {
+	initPage(show = false): IPage {
 		return { show };
 	}
 
 	public templats: IMap<IPage> = {
-		'passport': this.setShow(),
-		'registration': this.setShow()
+		'passport': this.initPage(),
+		'registration': this.initPage()
 	};
 
 	private currentTemplate: PageName;
