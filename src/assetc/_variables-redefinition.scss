@@ -1,4 +1,6 @@
 
+$boostrap-padding-top-form: 80px;
+$boostrap-padding-rl: 115px;
 
 .container {
     box-shadow: 3px 4px 54px rgba(0, 0, 0, 0.09);
@@ -7,7 +9,7 @@
 }
 
 .nav-tabs {
-    padding-top:  $custom-padding-top-pill;
+    padding-top:  80px;
 }
 
 .nav-link.active {
@@ -19,15 +21,15 @@
 .nav-link {
     color: #d3d3d3;
     font-size: 1.25em;
-    margin-right: $custom-padding-rl; // !!!!  
-    margin-left: $custom-padding-rl; 
+    margin-right: $boostrap-padding-rl; // !!!!  
+    margin-left: $boostrap-padding-rl; 
 }
 
 .tab-content {
-    padding-top: $custom-padding-top-form;
+    padding-top: $boostrap-padding-top-form;
     color: #3e3e3e;
     font-size: 1em;
-    padding-bottom: $custom-padding-top-form * 0.8; // !!!
+    padding-bottom: $boostrap-padding-top-form * 0.8; // !!!
 }
 .nav-link:hover {
     color: #3e3e3e;

@@ -1,14 +1,14 @@
 
-
-$custom-padding-top-form: 80px;
-$custom-padding-top-pill: 80px;
-$custom-padding-rl: 115px;
+$custom-btn-calendar-background: white;
+$custom-btn-calendar-display: inline;
 
 .custom-btn-calendar {
-    display: inline;
-    background: white;
+    display: $custom-btn-calendar-display;
+    background: $custom-btn-calendar-background;
+    
+    :hover() {
+        background: $custom-btn-calendar-background;
+    }
 }
 
-.custom-btn-calendar:hover() {
-    background: white;
-}
+

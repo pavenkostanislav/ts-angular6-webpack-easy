@@ -1,4 +1,4 @@
 @import "_variables";
-@import "_variables-redefinition";
-@import "_variables-new";
-@import "node_modules/bootstrap/scss/bootstrap.scss";
+@import "_variables-redefinition.scss";
+@import "_variables-custom.scss";
+@import "node_modules/bootstrap/scss/bootstrap.scss"; 
