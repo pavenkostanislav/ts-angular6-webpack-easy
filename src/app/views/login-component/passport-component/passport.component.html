@@ -33,15 +33,9 @@
 			</check-box>
 		</div>
 
-		<div *ngIf="form.value.consentUseSimpleSignature" class="form-group row">
-			<label class="col-sm-12  col-lg-4 col-xl-4" for="textControl">Ввести СМС код</label>
-			<div class="col-sm-12  col-lg-6 col-xl-6">
-				<div class="input-group">
-					<input-text-link [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)" (onClick)="sentSmsCode()" [linkName]="'Выслать повторно'"></input-text-link>
-				</div>
-				<hr />
-			</div>
-		</div>
+
+		<input-text-link *ngIf="form.value.consentUseSimpleSignature" [title]="'Ввести СМС код'" [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)" (onClick)="sentSmsCode()" [linkName]="'Выслать повторно'"></input-text-link>
+
 
 		<div class="form-group row">
 			<check-box [checkbox]="form.get('consentBkiRequestB1')" (onChanged)="changeValue('consentBkiRequestB1', $event)">
