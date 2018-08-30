@@ -66,3 +66,56 @@ $link-color: #394a83;
 $input-focus-color: #3e3e3e;
 $grid-breakpoints: (xs: 0,sm: 320px,md: 768px,lg: 1200px,xl: 1600px);
 $form-group-margin-bottom: 1.7rem;
+
+.container {
+    box-shadow: 3px 4px 54px rgba(0, 0, 0, 0.09);
+    opacity: 0.9;
+    margin-top: 3em;
+}
+
+.nav-tabs {
+    padding-top:  $custom-padding-top-pill;
+}
+
+.nav-link.active {
+    border-style: none none solid;
+    border-bottom-width: 0.3em;
+    box-shadow:  -1px 9px 33px -11px rgba(235, 66, 92, 0.5);
+}
+
+.nav-link {
+    color: #d3d3d3;
+    font-size: 1.25em;
+    margin-right: $custom-padding-rl; // !!!!  
+    margin-left: $custom-padding-rl; 
+}
+
+.tab-content {
+    padding-top: $custom-padding-top-form;
+    color: #3e3e3e;
+    font-size: 1em;
+    padding-bottom: $custom-padding-top-form * 0.8; // !!!
+}
+.nav-link:hover {
+    color: #3e3e3e;
+}
+
+.form-control {
+    border-bottom-width: 0.1em;
+}
+
+.btn {
+    font-size: 1.5em;
+}
+
+.form-check-inline {
+    box-shadow: -1px 1px 7px rgba(235, 66, 92, 0.3); 
+    width: 25px;
+    height: 25px;  
+}
+
+img {
+    display: inline-block;
+    height: auto;
+    max-width: 100%;
+  }

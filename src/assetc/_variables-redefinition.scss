@@ -1,9 +1,5 @@
 
 
-$custom-padding-top-form: 80px;
-$custom-padding-top-pill: 80px;
-$custom-padding-rl: 115px;
-
 .container {
     box-shadow: 3px 4px 54px rgba(0, 0, 0, 0.09);
     opacity: 0.9;
@@ -56,12 +52,3 @@ img {
     height: auto;
     max-width: 100%;
   }
-
-.btn-calendar {
-    display: inline;
-    background: white;
-}
-
-.btn-calendar:hover() {
-    background: white;
-}
