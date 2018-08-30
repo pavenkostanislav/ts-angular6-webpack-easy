@@ -17,5 +17,5 @@
 
 <div *ngIf="!dateControl.valid && !focused">
 	<hr />
-	<small>{{errorMessage}}</small>
+	<small  [innerHTML]="errorMessage"></small>
 </div>

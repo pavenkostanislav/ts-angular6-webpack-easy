@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, EventEmitter, Output, Input } from '@angular/core';
 import { AppService } from '../../views/app-component/app.service';
 import { TextBoxComponent } from '../text-box/text-box.component';
 @Component({
@@ -10,5 +10,11 @@ import { TextBoxComponent } from '../text-box/text-box.component';
 export class InputTextLinkComponent extends TextBoxComponent {
   constructor(appSrv: AppService) {
     super(appSrv);
+  }
+  @Input("linkName") linkName: string;
+  @Output() onClick = new EventEmitter<string>();
+
+  onClickLink(e: string) {
+    this.onClick.emit(e);
   }
 }

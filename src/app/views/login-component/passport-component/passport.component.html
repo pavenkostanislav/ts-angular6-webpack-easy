@@ -37,10 +37,7 @@
 			<label class="col-sm-12  col-lg-4 col-xl-4" for="textControl">Ввести СМС код</label>
 			<div class="col-sm-12  col-lg-6 col-xl-6">
 				<div class="input-group">
-					<text-box [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)"></text-box>
-					<span class="input-group-btn">
-						<a (click)="sentSmsCode()" class="btn btn-link" type="button">Выслать повторно</a>
-					</span>
+					<input-text-link [textControl]="form.get('consentUseSimpleSignatureSms')" (onChanged)="changeValue('consentUseSimpleSignatureSms', $event)" (onClick)="sentSmsCode()" [linkName]="'Выслать повторно'"></input-text-link>
 				</div>
 				<hr />
 			</div>

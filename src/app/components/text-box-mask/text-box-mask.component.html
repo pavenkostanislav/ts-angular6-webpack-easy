@@ -3,5 +3,5 @@
   (blur)="onBlur()" (focus)="onFocus()" />
 <div *ngIf="!textControl.valid && !focused">
   <hr />
-  <small>{{errorMessage}}</small>
+  <small  [innerHTML]="errorMessage"></small>
 </div>

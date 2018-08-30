@@ -9,7 +9,7 @@
 
   <div class="col-sm-12 offset-lg-4 col-lg-8 offset-xl-4 col-xl-8" *ngIf="!phoneControl.valid && !focused">
     <hr />
-    <small>{{errorMessage}}</small>
+    <small  [innerHTML]="errorMessage"></small>
   </div>
 
 </div>

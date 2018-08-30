@@ -9,7 +9,7 @@ import { AppService } from '../../views/app-component/app.service';
 })
 export class TextBoxComponent {
   @Input() title: string;
-  @Input() placeholder: string;
+  @Input() placeholder = '';
   @Input() textControl: AbstractControl;
 
 
