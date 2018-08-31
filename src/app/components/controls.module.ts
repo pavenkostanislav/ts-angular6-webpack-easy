@@ -6,11 +6,12 @@ import { TextMaskModule } from 'angular2-text-mask';
 import { CheckboxComponent } from './check-box/check-box.component';
 import { DatePickerComponent } from './date-picker/date-picker.component';
 import { InputDatePickerComponent } from './input-date-picker/input-date-picker.component';
+import { InputPasswordComponent } from './input-password/input-password.component';
 import { InputPhoneComponent } from './input-phone/input-phone.component';
+import { InputTextLinkComponent } from './input-text-link/input-text-link.component';
 import { InputTextComponent } from './input-text/input-text.component';
 import { TextBoxMaskComponent } from './text-box-mask/text-box-mask.component';
 import { TextBoxComponent } from './text-box/text-box.component';
-import { InputTextLinkComponent } from './input-text-link/input-text-link.component';
 
 @NgModule({
   imports: [
@@ -27,7 +28,8 @@ import { InputTextLinkComponent } from './input-text-link/input-text-link.compon
     TextBoxComponent,
     TextBoxMaskComponent,
     InputDatePickerComponent,
-    InputTextLinkComponent
+    InputTextLinkComponent,
+    InputPasswordComponent
   ],
   exports: [
     InputPhoneComponent,
@@ -37,7 +39,8 @@ import { InputTextLinkComponent } from './input-text-link/input-text-link.compon
     TextBoxComponent,
     TextBoxMaskComponent,
     InputDatePickerComponent,
-    InputTextLinkComponent
+    InputTextLinkComponent,
+    InputPasswordComponent
   ]
 })
 export class ControlModule { }
