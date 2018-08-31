@@ -22,8 +22,6 @@ export class SignInComponent implements OnInit {
 		});
 	}
 
-	forgotPassword = () => {}
-
 	submit = async () => {
 		this.appSrv.api.log.debug('view', '1.4.3', 'Вызывается сервис изменения данных пользователя /user/login, метод POST с передачей параметров login и password form.value: ', this.form.value);
 		this.appSrv.api.log.debug('view', '1.4.3', `valid: ${this.form.valid}`);

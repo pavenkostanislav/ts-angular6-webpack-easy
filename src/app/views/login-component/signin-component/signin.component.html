@@ -3,7 +3,7 @@
 	<form [formGroup]="form" (ngSubmit)="submit()">
 
 		<input-phone [phoneControl]="form.get('phoneMobile')" (onChanged)="changeValue('phoneMobile', $event)"></input-phone>
-		<input-password [textControl]="form.get('password')" (onChanged)="changeValue('password', $event)" (onClick)="forgotPassword()" ></input-password>
+		<input-password [textControl]="form.get('password')" (onChanged)="changeValue('password', $event)"></input-password>
 				
 		<div class="col-sm-12 offset-lg-4 col-lg-4 offset-lg-4 offset-xl-4 col-xl-4 offset-xl-4">
 			<input type="submit" class="btn btn-lg btn-info offset-lg-4 col-lg-4 offset-lg-4 offset-xl-4 col-xl-4 offset-xl-4" value="Войти" [disabled]="!form.valid" />

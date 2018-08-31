@@ -11,15 +11,11 @@ export class InputPasswordComponent extends TextBoxComponent {
 
   linkName: string;
 
-  @Output() onClick = new EventEmitter<string>();
-
   constructor(appSrv: AppService) {
     super(appSrv);
     this.title = 'Пароль';
     this.linkName   = 'забыли?';
   }
 
-  onClickLink(e: string) {
-    this.onClick.emit(e);
-  }
+	forgotPassword = () => {}
 }
